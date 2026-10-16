@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Design Walkthrough — Creative Theme (MakeMyTrip Full-Bleed & Glassmorphism) — Travel CARE Trip</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff', 100: '#e0f2fe', 200: '#bae6fd', 300: '#7dd3fc', 400: '#38bdf8',
+              500: '#0ea5e9', 600: '#0284c7', 700: '#0369a1', 800: '#075985', 900: '#0c4a6e', 950: '#082f49'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="shared/walkthrough.css">
+</head>
+<body class="min-h-screen bg-[#060a14] text-[#F8FAFC] flex flex-col font-sans">
+
+  <!-- ==================== 3-WAY THEME COMPARISON BANNER ==================== -->
+  <div class="bg-gradient-to-r from-[#021124] via-[#0b2447] to-[#1e1b4b] border-b border-sky-500/30 px-4 py-2 text-xs flex flex-wrap items-center justify-between gap-3 shadow-lg z-50">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="font-bold text-sky-300 uppercase tracking-wider text-[11px]">Walkthrough Design Theme:</span>
+      <span class="text-white font-medium">Design Creative — Current Live Application Architecture (MakeMyTrip Edge-to-Edge & Glassmorphism)</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="text-sky-200/70 text-[11px]">Switch Theme:</span>
+      <a href="../app_design/index.html" class="px-2.5 py-1 rounded-lg bg-black/40 hover:bg-black/60 text-slate-300 border border-slate-600 text-[11px] font-semibold transition-all flex items-center gap-1.5" title="View Baseline Executive Slate & Indigo theme">
+        <span>← Baseline Theme (Executive Slate)</span>
+      </a>
+      <a href="../app_design_one/index.html" class="px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-900 text-amber-300 border border-amber-500/40 text-[11px] font-semibold transition-all flex items-center gap-1.5" title="View Theme One Luxury Concierge theme">
+        <span>← Theme One (Luxury Concierge)</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== TOP MASTER HEADER ==================== -->
+  <header class="border-b border-slate-800 bg-[#060a14]/90 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-sky-400 flex items-center justify-center font-black text-white text-lg shadow-xl shadow-sky-950/50 border border-sky-400/30">
+          ✈️
+        </div>
+        <div>
+          <div class="flex items-center gap-2.5">
+            <h1 class="text-base font-extrabold text-white tracking-tight">Travel CARE Creative Platform</h1>
+            <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30 uppercase tracking-wider">
+              Creative Walkthrough
+            </span>
+          </div>
+          <p class="text-xs text-sky-200/70">MakeMyTrip Full-Bleed Architecture • Frosted Glassmorphism • 23 Interactive Screens</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-xs text-sky-200/60 hidden sm:inline">23 Complete Screens • 18 Modals</span>
+        <a href="b2c/01_landing_page.html" class="px-4 py-2.5 bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl transition-all shadow-lg shadow-sky-900/40 flex items-center gap-1.5 border border-sky-400/30">
+          <span>✨</span> Start Creative B2C Walkthrough
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO OVERVIEW ==================== -->
+  <section class="max-w-7xl mx-auto px-4 py-8 w-full space-y-4">
+    <div class="bg-gradient-to-r from-[#0a1931] via-[#0b2447] to-[#081b33] border border-sky-500/30 rounded-3xl p-6 md:p-8 shadow-2xl relative overflow-hidden">
+      <div class="absolute -right-12 -top-12 w-64 h-64 rounded-full bg-sky-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-3xl space-y-3 relative z-10">
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold uppercase tracking-wider px-3 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-400/30">
+            MakeMyTrip Full-Bleed Alignment
+          </span>
+          <span class="text-xs text-sky-200/80 font-medium">B2C • Agency Admin • Sub-Agent</span>
+        </div>
+
+        <h2 class="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
+          Current Live Application Experience: Edge-to-Edge Immersion & Frosted Glassmorphism
+        </h2>
+
+        <p class="text-xs md:text-sm text-sky-100/80 leading-relaxed">
+          The Creative Design theme replicates 100% of the live platform's latest architectural upgrades. Panoramic edge-to-edge full-bleed hero backgrounds, studio-lit unbranded passenger aircraft imagery, pristine illuminated 5-star hotel reception artwork (free of brand text), executive chauffeur fleets, and floating frosted glass search consoles with white pill input capsules.
+        </p>
+
+        <div class="flex flex-wrap gap-2 pt-2 text-[11px] font-semibold">
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-sky-200 border border-[#0d2a52]">🌐 100% Full-Bleed Viewport</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-sky-300 border border-sky-500/30">🧊 Frosted Glassmorphism (blur-xl)</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-amber-300 border border-amber-500/30">🏨 Clean Unbranded Reception</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-sky-400 border border-sky-500/30">✈️ Unbranded Airbus A350</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-emerald-300 border border-emerald-500/30">✓ OpenRouteMap Leaflet Active</span>
+          <span class="px-2.5 py-1 rounded-lg bg-[#040e1f] text-purple-300 border border-purple-500/30">✓ 23 Standalone Screens</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 3 ROLE PORTALS SITEMAP ==================== -->
+  <main class="max-w-7xl mx-auto px-4 pb-16 w-full space-y-12">
+
+    <!-- ROLE 1: B2C CUSTOMER -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-300 text-sm">
+            ✈️
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">1. B2C Customer Flow (11 Screens)</h3>
+            <p class="text-xs text-slate-400">Storefront with dynamic hero crossfade, flight & hotel search, checkout with mandatory gender, A4 ticket, chauffeur fleet, PNR, & traveler vault</p>
+          </div>
+        </div>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-sky-500/15 text-sky-300 border border-sky-500/30">
+          Core Client Journey
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- 01 -->
+        <a href="b2c/01_landing_page.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 01</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">Full-Bleed Hero</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">01. Creative Landing Page</h4>
+          <p class="text-xs text-slate-300 mt-1">Full-bleed edge-to-edge MakeMyTrip hero, dynamic crossfade across 4 tabs, frosted glass console & white pill capsules.</p>
+        </a>
+
+        <!-- 02 -->
+        <a href="b2c/02_flight_results.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 02</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">GDS Results</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">02. Flight Search & Offers</h4>
+          <p class="text-xs text-slate-300 mt-1">Multi-GDS live feed summary bar, baggage allowance rules modal, airline filters, & favorite star toggle.</p>
+        </a>
+
+        <!-- 03 -->
+        <a href="b2c/03_flight_booking.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 03</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Mandatory Gender</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">03. Passenger Booking Flow</h4>
+          <p class="text-xs text-slate-300 mt-1">5-step stepper, mandatory passenger gender validation, add-ons, Quick Traveler library, & Stripe checkout simulation.</p>
+        </a>
+
+        <!-- 04 -->
+        <a href="b2c/04_flight_ticket.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 04</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">Printable A4</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">04. Official E-Ticket (A4)</h4>
+          <p class="text-xs text-slate-300 mt-1">Official printable e-ticket with PNR QF-789214, flight segments, barcodes, receipt, and print CSS.</p>
+        </a>
+
+        <!-- 05 -->
+        <a href="b2c/05_hotel_results.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 05</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Unbranded Artwork</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">05. Hotel Search Terminal</h4>
+          <p class="text-xs text-slate-300 mt-1">Panoramic luxury hotel reception hero (without hotel name branding), 4 wholesale KPI cards, filters, and room selection popup.</p>
+        </a>
+
+        <!-- 06 -->
+        <a href="b2c/06_hotel_booking.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 06</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">Instant Voucher</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">06. Hotel Guest Booking</h4>
+          <p class="text-xs text-slate-300 mt-1">3-step progress bar, mandatory gender dropdown, bed preferences, special requests, and voucher confirmation.</p>
+        </a>
+
+        <!-- 07 -->
+        <a href="b2c/07_car_rental.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 07</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">OpenRouteMap Leaflet</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">07. Car Rental & Chauffeur</h4>
+          <p class="text-xs text-slate-300 mt-1">Full-bleed chauffeur fleet hero, live OpenStreetMap Leaflet route, 4 category cards, and confirmation modal CAR-ENQ-234288.</p>
+        </a>
+
+        <!-- 08 -->
+        <a href="b2c/08_retrieve_pnr.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 08</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">GDS Lookup</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">08. Retrieve PNR Terminal</h4>
+          <p class="text-xs text-slate-300 mt-1">Full-bleed airliner hero, floating frosted glass lookup card, sample pre-fill, flight timeline card, and voucher links.</p>
+        </a>
+
+        <!-- 09 -->
+        <a href="b2c/09_my_bookings.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 09</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-slate-700 text-slate-300">Customer Ledger</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">09. My Bookings Portal</h4>
+          <p class="text-xs text-slate-300 mt-1">Tabs for Flights, Hotels, and Cars with status filters, PNR retrieval modals, and voucher PDF generation.</p>
+        </a>
+
+        <!-- 10 -->
+        <a href="b2c/10_saved_travelers.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-sky-400 font-mono">STEP 10</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Profile Vault</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-sky-300 transition-colors">10. Saved Travelers Vault</h4>
+          <p class="text-xs text-slate-300 mt-1">Traveler card library with Add New Traveler modal, passport expiry validation, and frequent flyer number management.</p>
+        </a>
+
+        <!-- 11 -->
+        <a href="b2c/11_favorite_searches.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-sky-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-amber-400 font-mono">STEP 11</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Card Grid</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-amber-300 transition-colors">11. Favorite Searches Vault</h4>
+          <p class="text-xs text-slate-300 mt-1">3-column elevated card grid with 5 KPI stats, filter tabs, smart past date blanking indicator, and 1-click relaunch.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ROLE 2: AGENCY ADMIN -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-indigo-500/15 border border-indigo-500/30 flex items-center justify-center text-indigo-300 text-sm">
+            ⚡
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">2. Agency Admin Portal (7 Screens)</h3>
+            <p class="text-xs text-slate-400">Headquarters command: KPI analytics, B2B sub-agent tiers, booking audits, dynamic markups, CMS, support desk, & multi-currency wallet</p>
+          </div>
+        </div>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 border border-indigo-500/30">
+          Executive HQ Management
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- 01 -->
+        <a href="agency_admin/01_dashboard.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 01</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Executive KPIs</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">01. Executive Command Dashboard</h4>
+          <p class="text-xs text-slate-300 mt-1">Monthly gross booking volume, commission velocity, live booking ticker, sub-agent ranking, and quick action bar.</p>
+        </a>
+
+        <!-- 02 -->
+        <a href="agency_admin/02_sub_agents.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 02</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">B2B Network</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">02. Sub-Agent Network Manager</h4>
+          <p class="text-xs text-slate-300 mt-1">Sub-agent accounts ledger, Silver/Gold/Platinum tier assignments, credit limit overrides, and onboarding modal.</p>
+        </a>
+
+        <!-- 03 -->
+        <a href="agency_admin/03_all_bookings.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 03</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-slate-700 text-slate-300">Central Ledger</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">03. Master Bookings Ledger</h4>
+          <p class="text-xs text-slate-300 mt-1">Full agency ledger across flights, hotels, and cars with GDS source badges, cancellation controls, and export.</p>
+        </a>
+
+        <!-- 04 -->
+        <a href="agency_admin/04_markup_rules.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 04</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Dynamic Pricing</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">04. Markup & Commission Engine</h4>
+          <p class="text-xs text-slate-300 mt-1">Rule builder for B2C vs B2B markups (percentage or flat rate), airline-specific rules, and live margin calculator.</p>
+        </a>
+
+        <!-- 05 -->
+        <a href="agency_admin/05_landing_cms.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 05</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">Multi-Tenant CMS</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">05. Storefront CMS & Branding</h4>
+          <p class="text-xs text-slate-300 mt-1">Live logo/favicon uploaders, English/French bilingual copy editors, hero imagery picker, and footer configuration.</p>
+        </a>
+
+        <!-- 06 -->
+        <a href="agency_admin/06_support_tickets.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 06</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">Elevated Modals</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">06. Support Helpdesk Desk</h4>
+          <p class="text-xs text-slate-300 mt-1">Elevated white card ticket creation modal with deep backdrop blur, sub-agent queues, and Tier 2 SuperAdmin escalation.</p>
+        </a>
+
+        <!-- 07 -->
+        <a href="agency_admin/07_wallet.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-indigo-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-indigo-400 font-mono">ADMIN 07</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Financial Engine</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">07. Multi-Currency Wallet</h4>
+          <p class="text-xs text-slate-300 mt-1">Agency prepaid wallet (AUD, USD, EUR, INR) with bank top-up verification, low-balance thresholds, and transaction audit.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ROLE 3: B2B SUB-AGENT -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-300 text-sm">
+            💼
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-white">3. B2B Sub-Agent Portal (5 Screens)</h3>
+            <p class="text-xs text-slate-400">Wholesale terminal: net fare search, client PNR reticketing, commission margin wallet, and priority agent support</p>
+          </div>
+        </div>
+        <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+          Partner Agent Terminal
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- 01 -->
+        <a href="sub_agent/01_dashboard.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-emerald-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-emerald-400 font-mono">AGENT 01</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Gold Tier</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">01. Sub-Agent Portal Hub</h4>
+          <p class="text-xs text-slate-300 mt-1">Credit balance gauge, monthly sales KPIs, quick flight search, recent bookings, and tier commission rate indicator.</p>
+        </a>
+
+        <!-- 02 -->
+        <a href="sub_agent/02_wholesale_search.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-emerald-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-emerald-400 font-mono">AGENT 02</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">Wholesale Net Fares</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">02. Wholesale Booking Terminal</h4>
+          <p class="text-xs text-slate-300 mt-1">Wholesale net flight & hotel search console with live margin markup controls and instant agent credit ticketing.</p>
+        </a>
+
+        <!-- 03 -->
+        <a href="sub_agent/03_client_bookings.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-emerald-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-emerald-400 font-mono">AGENT 03</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-slate-700 text-slate-300">Client Roster</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">03. Client Bookings & Reticketing</h4>
+          <p class="text-xs text-slate-300 mt-1">Client booking ledger with commission earnings per ticket, client invoice generator, and PNR reprint actions.</p>
+        </a>
+
+        <!-- 04 -->
+        <a href="sub_agent/04_wallet_earnings.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-emerald-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-emerald-400 font-mono">AGENT 04</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Earnings Vault</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">04. Margin Earnings & Wallet</h4>
+          <p class="text-xs text-slate-300 mt-1">Net profit statements, commission withdrawal requests, credit limit top-ups, and bank wire proofs.</p>
+        </a>
+
+        <!-- 05 -->
+        <a href="sub_agent/05_support.html" class="p-4 rounded-2xl bg-[#091429] border border-slate-800 hover:border-emerald-400/50 hover:bg-[#0c1c38] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold text-emerald-400 font-mono">AGENT 05</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">Priority Queue</span>
+          </div>
+          <h4 class="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">05. Priority Agent Helpdesk</h4>
+          <p class="text-xs text-slate-300 mt-1">Direct ticketing channel to parent agency operations desk with elevated ticket creation modal and live thread history.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- ==================== THEME COMPARISON MATRIX ==================== -->
+    <section class="bg-[#091429] border border-slate-800 rounded-3xl p-6 md:p-8 space-y-6">
+      <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+        <div>
+          <h3 class="text-lg font-bold text-white">Three Standalone Design Options for Client Selection</h3>
+          <p class="text-xs text-slate-400">All 3 themes share 100% functional parity with 23 interactive screens, Leaflet maps, and modal flows.</p>
+        </div>
+        <span class="text-xs px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/30 font-semibold">
+          Theme Comparison Matrix
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Option 1: Baseline Reference -->
+        <div class="p-5 rounded-2xl bg-slate-900 border border-slate-700/80 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-400">Baseline Theme</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">Default Reference</span>
+          </div>
+          <h4 class="text-base font-bold text-white">Executive Slate & Indigo</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Clean corporate dark slate palette with sharp Indigo accents. Standard boxed container layout for high data-density corporate travel management.
+          </p>
+          <div class="pt-2">
+            <a href="../app_design/index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-indigo-300 text-xs font-semibold border border-slate-700 transition-all">
+              <span>View Baseline Suite →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Option 2: Luxury Concierge -->
+        <div class="p-5 rounded-2xl bg-[#032e28] border border-emerald-600/40 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-300">Theme One</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">Luxury Editorial</span>
+          </div>
+          <h4 class="text-base font-bold text-white font-serif">Forest Obsidian & Champagne Gold</h4>
+          <p class="text-xs text-emerald-100/70 leading-relaxed">
+            Aman and Four Seasons inspired luxury hospitality aesthetic. Deep spruce emeralds, warm champagne gold glows, and serif typography.
+          </p>
+          <div class="pt-2">
+            <a href="../app_design_one/index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#02201c] hover:bg-[#042823] text-amber-300 text-xs font-semibold border border-amber-500/30 transition-all">
+              <span>View Theme One Suite →</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Option 3: Creative Theme (Current) -->
+        <div class="p-5 rounded-2xl bg-[#0a2540] border border-sky-400/50 space-y-3 ring-2 ring-sky-500/30">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-300">Creative Theme (Active)</span>
+            <span class="text-[10px] px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-400/30 font-bold">Current Live App</span>
+          </div>
+          <h4 class="text-base font-bold text-white">MakeMyTrip Full-Bleed & Glassmorphism</h4>
+          <p class="text-xs text-sky-100/80 leading-relaxed">
+            100% full-bleed edge-to-edge panoramic hero canvases, studio-lit unbranded airliner & unbranded 5-star hotel artwork, and translucent frosted glass consoles.
+          </p>
+          <div class="pt-2">
+            <a href="b2c/01_landing_page.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold shadow-md shadow-sky-600/30 transition-all">
+              <span>Explore Creative Suite →</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-slate-800 bg-[#040810] py-6 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <p>© 2026 Travel CARE Trip. Standalone Offline Walkthrough Suite — Creative Theme.</p>
+      <div class="flex items-center gap-4 text-slate-400">
+        <a href="../app_design/index.html" class="hover:text-slate-200">Baseline Theme</a>
+        <span>•</span>
+        <a href="../app_design_one/index.html" class="hover:text-slate-200">Theme One</a>
+        <span>•</span>
+        <a href="index.html" class="text-sky-400 font-semibold">Creative Theme</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="shared/walkthrough.js"></script>
+</body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retrieve Booking & PNR Lookup — Travel CARE Trip (B2C Walkthrough)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+</head>
+<body class="min-h-screen bg-[#0B1120] text-slate-100 flex flex-col font-sans">
+
+  <!-- ==================== TOP WALKTHROUGH CONTROLLER ==================== -->
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border-sky-400/40 border">
+        Creative Theme • B2C Customer (8/11)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">PNR Itinerary Lookup & Real-time Vault</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/b2c/08_retrieve_pnr.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/b2c/08_retrieve_pnr.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="09_my_bookings.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: My Bookings →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC NAVBAR ==================== -->
+  <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-10 z-40 text-slate-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="01_landing_page.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            ✈️
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+              Indore Travels
+            </span>
+            <span class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">
+              TRAVEL & TOURISM PORTAL
+            </span>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="01_landing_page.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Home</a>
+          <a href="02_flight_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Flights</a>
+          <a href="05_hotel_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Hotels</a>
+          <a href="07_car_rental.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Cars</a>
+          <a href="08_retrieve_pnr.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">Retrieve PNR</a>
+        </nav>
+
+        <div class="hidden md:flex items-center gap-3">
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-full p-0.5 shadow-xs">
+            <button type="button" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-xs">🇬🇧 EN</button>
+            <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full text-xs font-semibold text-slate-300 hover:text-white">🇫🇷 FR</button>
+          </div>
+          <a href="09_my_bookings.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+            📋 My Bookings
+          </a>
+          <a href="../agency_admin/01_dashboard.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all">
+            ⚡ Dashboard
+          </a>
+          <div class="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <span class="text-xs font-medium text-slate-300">Hi, <span class="font-semibold text-white">Jason</span></span>
+            <a href="10_saved_travelers.html" class="px-2 py-1 rounded text-xs text-slate-400 hover:text-indigo-300">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT ==================== -->
+  <main class="min-h-screen pb-16 space-y-6 w-full text-slate-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-4">
+
+    <!-- Compact Single-Row Executive Header -->
+    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold">
+          🎫
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-lg font-bold text-white tracking-tight">Retrieve Booking & Itinerary</h1>
+            <span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20">
+              Live GDS Synced
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">Access instant e-tickets, hotel booking vouchers, and live flight status via 6-digit PNR</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <button onclick="document.getElementById('pnr-input').value='QF-789214'; document.getElementById('name-input').value='Woods'; showToast('Sample booking filled!');"
+                class="text-xs px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-medium transition-all">
+          ⚡ Pre-fill Sample
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 Single-Line Minimized KPI Cards -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">🔍</span>
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400">Lookup Method</div>
+            <div class="text-xs font-bold text-white">PNR + Last Name</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">🎫</span>
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400">Supported Types</div>
+            <div class="text-xs font-bold text-white">Flight & Hotel</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">📄</span>
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400">Digital Document</div>
+            <div class="text-xs font-bold text-emerald-400">E-Ticket & Voucher</div>
+          </div>
+        </div>
+      </div>
+      <div class="bg-slate-900/80 border border-slate-800 rounded-xl p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="text-base">⚡</span>
+          <div>
+            <div class="text-[10px] uppercase font-bold text-slate-400">Sync Pipeline</div>
+            <div class="text-xs font-bold text-indigo-400">Duffel / Amadeus</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+        </div>
+
+    <!-- Main Full-Bleed Container with Panoramic Aviation Hero -->
+    <div class="w-full relative z-20 min-h-[640px] flex flex-col justify-between pt-6 pb-16 overflow-hidden">
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <img
+          src="../images/hero/hero_plane_flight.jpg"
+          alt="Commercial Airliner"
+          class="absolute inset-0 w-full h-full object-cover object-center opacity-100 pointer-events-none"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/30 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
+      </div>
+
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col space-y-6">
+        <div class="text-left space-y-2 pt-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-sky-400 border border-sky-500/30 text-xs font-semibold shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+            <span>Real-time GDS Verification</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-md">
+            Retrieve & Manage Itinerary
+          </h2>
+          <p class="text-sm text-slate-200 font-medium drop-shadow-sm">
+            Instant access to ticketed flight manifests, e-ticket PDFs, and hotel vouchers.
+          </p>
+        </div>
+      <!-- Search Form Card -->
+    <div class="bg-slate-950/40 backdrop-blur-xl border border-white/25 rounded-3xl p-6 sm:p-8 shadow-[0_16px_50px_rgba(0,0,0,0.5)] space-y-4 ring-1 ring-white/20">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-semibold text-slate-300 block mb-1.5">Booking Reference / PNR *</label>
+          <input
+            id="pnr-input"
+            type="text"
+            value="QF-789214"
+            placeholder="e.g. QF-789214 or 6-digit PNR"
+            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-mono placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 transition-all uppercase font-bold tracking-wider text-sm"
+          />
+          <p class="text-[10px] text-slate-500 mt-1">Found in your SMS, booking email confirmation or bank receipt</p>
+        </div>
+
+        <div>
+          <label class="text-xs font-semibold text-slate-300 block mb-1.5">Passenger / Lead Guest Last Name *</label>
+          <input
+            id="name-input"
+            type="text"
+            value="Woods"
+            placeholder="e.g. Woods"
+            class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white placeholder:text-slate-500 focus:outline-none focus:border-indigo-500 transition-all font-medium text-sm"
+          />
+          <p class="text-[10px] text-slate-500 mt-1">Exact family name matching government passport</p>
+        </div>
+      </div>
+
+      <button
+        onclick="showToast('Verified with Duffel API: Booking retrieved successfully!');"
+        class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-600/20 cursor-pointer text-sm">
+        <span>🔍</span> Retrieve Booking Details
+      </button>
+    </div>
+
+    <!-- Search Result Card (Active State) -->
+    <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-5 animate-fade-in">
+      
+      <!-- Result Top Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-[10px] uppercase font-bold tracking-wider text-slate-400 block">Verified Record Locator</span>
+          <div class="flex items-center gap-3 mt-0.5">
+            <span class="text-2xl font-black font-mono text-indigo-400 tracking-wider">QF-789214</span>
+            <span class="px-2.5 py-0.5 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full text-[11px] font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Confirmed & Issued
+            </span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <a href="04_flight_ticket.html" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
+            <span>📄</span> View Printable E-Ticket
+          </a>
+          <button onclick="openModal('modal-pnr-summary')" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold rounded-xl text-xs border border-slate-700 transition-all">
+            Quick Summary
+          </button>
+        </div>
+      </div>
+
+      <!-- Detail Grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 text-[10px] uppercase font-semibold block">Booking Type</span>
+          <span class="font-bold text-white text-sm">Flight (International)</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">Round Trip Economy</span>
+        </div>
+
+        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 text-[10px] uppercase font-semibold block">Lead Traveler</span>
+          <span class="font-bold text-white text-sm">Mr. Jason Woods</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">Gender: Male • Adult</span>
+        </div>
+
+        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 text-[10px] uppercase font-semibold block">Air Carrier</span>
+          <span class="font-bold text-white text-sm">British Airways</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">Flight BA-108</span>
+        </div>
+
+        <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800/80">
+          <span class="text-slate-500 text-[10px] uppercase font-semibold block">E-Ticket Number</span>
+          <span class="font-bold font-mono text-emerald-400 text-sm">081-9920145821</span>
+          <span class="text-[10px] text-slate-400 block mt-0.5">100% GDS Authenticated</span>
+        </div>
+      </div>
+
+      <!-- Flight Route Preview -->
+      <div class="bg-slate-950/60 border border-slate-800/80 rounded-xl p-4">
+        <div class="flex items-center justify-between text-xs font-semibold text-slate-400 mb-2">
+          <span>Outbound Leg • Sun, 15 Nov 2026</span>
+          <span class="text-emerald-400 font-medium">On Schedule</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xl font-bold text-white">10:15</div>
+            <div class="text-xs font-semibold text-slate-300">LHR • London</div>
+            <div class="text-[10px] text-slate-500">Terminal 5</div>
+          </div>
+          <div class="flex-1 px-6 text-center">
+            <div class="text-[11px] text-slate-400 font-medium">6h 45m • Direct</div>
+            <div class="relative flex items-center justify-center my-1">
+              <div class="w-full h-0.5 bg-slate-800"></div>
+              <span class="absolute text-slate-500 bg-slate-950 px-1">✈</span>
+            </div>
+            <div class="text-[10px] text-slate-500">Airbus A350-1000</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xl font-bold text-white">20:00</div>
+            <div class="text-xs font-semibold text-slate-300">DXB • Dubai</div>
+            <div class="text-[10px] text-slate-500">Terminal 3</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passengers Table -->
+      <div>
+        <div class="text-xs font-bold text-slate-300 mb-2">Ticketed Passengers</div>
+        <div class="overflow-x-auto border border-slate-800 rounded-xl">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+              <tr>
+                <th class="py-2.5 px-3">Passenger Name</th>
+                <th class="py-2.5 px-3">Gender</th>
+                <th class="py-2.5 px-3">Type</th>
+                <th class="py-2.5 px-3">Passport #</th>
+                <th class="py-2.5 px-3">Seat</th>
+                <th class="py-2.5 px-3 text-right">E-Ticket #</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/60 bg-slate-900/40">
+              <tr>
+                <td class="py-2.5 px-3 font-semibold text-white">Mr. Jason Woods</td>
+                <td class="py-2.5 px-3">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20">
+                    Male
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-slate-400">Adult</td>
+                <td class="py-2.5 px-3 font-mono text-slate-300">GB98452103</td>
+                <td class="py-2.5 px-3 font-mono text-indigo-400 font-bold">14A</td>
+                <td class="py-2.5 px-3 font-mono text-emerald-400 text-right">081-9920145821</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-semibold text-white">Mrs. Elena Woods</td>
+                <td class="py-2.5 px-3">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-pink-500/10 text-pink-400 border border-pink-500/20">
+                    Female
+                  </span>
+                </td>
+                <td class="py-2.5 px-3 text-slate-400">Adult</td>
+                <td class="py-2.5 px-3 font-mono text-slate-300">GB98452104</td>
+                <td class="py-2.5 px-3 font-mono text-indigo-400 font-bold">14B</td>
+                <td class="py-2.5 px-3 font-mono text-emerald-400 text-right">081-9920145822</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+        </div>
+    </div>
+</main>
+
+  <!-- ==================== QUICK SUMMARY MODAL ==================== -->
+  <div id="modal-pnr-summary" class="modal-backdrop">
+    <div class="modal-box max-w-md">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>📋</span> PNR Booking Summary
+        </h3>
+        <button onclick="closeModal('modal-pnr-summary')" class="text-slate-400 hover:text-white text-lg leading-none">✕</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="flex justify-between py-1 border-b border-slate-800">
+          <span class="text-slate-400">Booking Reference:</span>
+          <span class="font-mono font-bold text-indigo-400">QF-789214</span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-800">
+          <span class="text-slate-400">Agency:</span>
+          <span class="font-medium text-white">Travel CARE Trip Premier Portal</span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-800">
+          <span class="text-slate-400">Booking Date:</span>
+          <span class="text-white">14 Oct 2026, 21:15 UTC</span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-800">
+          <span class="text-slate-400">Payment Status:</span>
+          <span class="text-emerald-400 font-bold">Paid ($788.00 via Stripe)</span>
+        </div>
+        <div class="flex justify-between py-1">
+          <span class="text-slate-400">Baggage Allowance:</span>
+          <span class="text-white">2 x 23kg Checked + 7kg Cabin</span>
+        </div>
+      </div>
+
+      <div class="mt-5 flex gap-2">
+        <button onclick="closeModal('modal-pnr-summary')" class="flex-1 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium text-xs">
+          Close
+        </button>
+        <a href="04_flight_ticket.html" class="flex-1 py-2 text-center rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs">
+          Open Full E-Ticket →
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+  <!-- ==================== PUBLIC FOOTER ==================== -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800/60">
+        <div class="lg:col-span-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✈️</span>
+            <span class="font-extrabold text-lg text-white tracking-tight">Indore Travels</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your trusted travel partner. Seamless flight bookings, verified hotels, and flexible car rentals with instant confirmation.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-400">
+            <p class="flex items-center gap-2"><span>📞</span> <a href="tel:+18005550199" class="hover:text-blue-400 transition-colors font-medium">+1 (800) 555-0199</a></p>
+            <p class="flex items-center gap-2"><span>✉️</span> <a href="mailto:support@indoretravels.com" class="hover:text-blue-400 transition-colors">support@indoretravels.com</a></p>
+            <p class="flex items-center gap-2"><span>📍</span> <span>Global Partner Hub</span></p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Press & Media</a></li>
+            <li><a href="../agency_admin/01_dashboard.html" class="hover:text-emerald-400 transition-colors font-semibold text-indigo-400">Partner With Us (B2B)</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Help & FAQ</a></li>
+            <li><a href="09_my_bookings.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Manage My Bookings</a></li>
+            <li><a href="08_retrieve_pnr.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Retrieve PNR (E-Tickets & Vouchers)</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cancellation & Refund Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">24/7 Support Hub</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Legal & Compliance</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security & Data Protection</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Travel Services</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="02_flight_results.html" class="hover:text-emerald-400 transition-colors">Flight Booking</a></li>
+            <li><a href="05_hotel_results.html" class="hover:text-emerald-400 transition-colors">Hotel Reservations</a></li>
+            <li><a href="07_car_rental.html" class="hover:text-emerald-400 transition-colors">Chauffeur & Fleet Rental</a></li>
+            <li><a href="11_favorite_searches.html" class="hover:text-emerald-400 transition-colors">Saved Searches Vault</a></li>
+            <li><a href="04_flight_ticket.html" class="hover:text-emerald-400 transition-colors">Sample E-Ticket PDF</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 Travel CARE Trip Platform. All Rights Reserved.</p>
+        <div class="flex items-center gap-4 text-slate-400 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> PCI-DSS Certified</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> SSL 256-Bit Encrypted</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> IATA Accredited Partner</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/walkthrough.js"></script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passenger Booking & Checkout — Travel CARE Trip (B2C Walkthrough)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+</head>
+<body class="min-h-screen bg-[#0B1120] text-slate-100 flex flex-col font-sans">
+
+  <!-- ==================== TOP WALKTHROUGH CONTROLLER ==================== -->
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border-sky-400/40 border">
+        Creative Theme • B2C Customer (3/11)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">Passenger Details & Add-ons Checkout</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/b2c/03_flight_booking.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/b2c/03_flight_booking.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="04_flight_ticket.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: Flight E-Ticket →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC NAVBAR ==================== -->
+  <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-10 z-40 text-slate-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="01_landing_page.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            ✈️
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+              Indore Travels
+            </span>
+            <span class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">
+              TRAVEL & TOURISM PORTAL
+            </span>
+          </div>
+        </a>
+
+        <!-- Main Navigation Items -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="01_landing_page.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Home</a>
+          <a href="02_flight_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">Flights</a>
+          <a href="05_hotel_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Hotels</a>
+          <a href="07_car_rental.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Cars</a>
+          <a href="08_retrieve_pnr.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Retrieve PNR</a>
+        </nav>
+
+        <!-- Right Actions: Language Toggle & User Account -->
+        <div class="hidden md:flex items-center gap-3">
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-full p-0.5 shadow-xs">
+            <button type="button" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-xs">🇬🇧 EN</button>
+            <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full text-xs font-semibold text-slate-300 hover:text-white">🇫🇷 FR</button>
+          </div>
+          <a href="09_my_bookings.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+            📋 My Bookings
+          </a>
+          <a href="../agency_admin/01_dashboard.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all">
+            ⚡ Dashboard
+          </a>
+          <div class="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <span class="text-xs font-medium text-slate-300">Hi, <span class="font-semibold text-white">Jason</span></span>
+            <a href="10_saved_travelers.html" class="px-2 py-1 rounded text-xs text-slate-400 hover:text-indigo-300">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN BOOKING CONTAINER ==================== -->
+  <main class="max-w-6xl mx-auto px-4 py-8 space-y-6 pb-16 w-full">
+
+    <!-- Stepper Progress Indicator (5 Steps matching FlightBookingFlow.tsx) -->
+    <div class="flex gap-2 p-1.5 bg-slate-900 border border-slate-800 rounded-2xl shadow-xl overflow-x-auto text-xs">
+      <div class="flex-1 text-center font-extrabold py-2.5 px-2 rounded-xl bg-emerald-950/80 border border-emerald-500/40 text-emerald-300 flex items-center justify-center gap-1.5 whitespace-nowrap">
+        <span>✓</span> 1. Review Flight
+      </div>
+      <div class="flex-1 text-center font-extrabold py-2.5 px-2 rounded-xl bg-blue-600 text-white shadow-md flex items-center justify-center gap-1.5 whitespace-nowrap">
+        <span>●</span> 2. Passenger Details
+      </div>
+      <div class="flex-1 text-center font-extrabold py-2.5 px-2 rounded-xl bg-slate-800/80 text-slate-300 flex items-center justify-center gap-1.5 whitespace-nowrap">
+        <span>3.</span> Add-ons
+      </div>
+      <div class="flex-1 text-center font-extrabold py-2.5 px-2 rounded-xl bg-slate-800/60 text-slate-400 flex items-center justify-center gap-1.5 whitespace-nowrap">
+        <span>4.</span> Payment
+      </div>
+      <div class="flex-1 text-center font-extrabold py-2.5 px-2 rounded-xl bg-slate-800/40 text-slate-500 flex items-center justify-center gap-1.5 whitespace-nowrap">
+        <span>5.</span> Confirmation
+      </div>
+    </div>
+
+    <!-- Grid: Form on Left, Fare Summary on Right -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+      
+      <!-- Left Column: Forms -->
+      <div class="lg:col-span-2 space-y-6">
+        
+        <!-- Flight Summary Card -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-lg space-y-3">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-white">Qantas Airways QF 401</span>
+              <span class="text-xs text-slate-400">• Boeing 737-800</span>
+            </div>
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+              Seat Confirmed on Hold
+            </span>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-300">
+            <div>
+              <div class="text-base font-black text-white">08:00 SYD</div>
+              <div class="text-slate-400">Sydney Terminal 3</div>
+            </div>
+            <div class="text-center">
+              <span class="text-[10px] text-slate-500 block">1h 35m • Non-stop</span>
+              <span class="text-indigo-400 text-sm">✈️</span>
+            </div>
+            <div class="text-right">
+              <div class="text-base font-black text-white">09:35 MEL</div>
+              <div class="text-slate-400">Melbourne Terminal 1</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Passenger 1 Details Form -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl space-y-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-3">
+            <h2 class="text-base font-bold text-white flex items-center gap-2">
+              <span>👤</span>
+              <span>Primary Traveler (Adult)</span>
+            </h2>
+            <button type="button" onclick="openModal('quick-traveler-modal')" class="text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1 cursor-pointer">
+              <span>⚡ Quick-fill from Saved Travelers</span>
+            </button>
+          </div>
+
+          <form id="passenger-form" onsubmit="event.preventDefault(); window.location.href='04_flight_ticket.html';" class="space-y-4 text-xs">
+            
+            <!-- Row 1: Title, Names, Gender -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Title <span class="text-rose-400">*</span></label>
+                <select required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+                  <option value="Mr">Mr.</option>
+                  <option value="Mrs">Mrs.</option>
+                  <option value="Ms">Ms.</option>
+                  <option value="Dr">Dr.</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">First Name <span class="text-rose-400">*</span></label>
+                <input type="text" id="pax-firstname" required value="David" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Last Name <span class="text-rose-400">*</span></label>
+                <input type="text" id="pax-lastname" required value="Miller" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+
+              <!-- MANDATORY GENDER FIELD -->
+              <div>
+                <label class="block font-semibold text-amber-300 mb-1">Gender <span class="text-rose-400">*</span></label>
+                <select id="pax-gender" required class="w-full bg-slate-950 border-2 border-amber-500/50 rounded-xl px-3 py-2 text-white text-xs font-bold">
+                  <option value="">Select Gender *</option>
+                  <option value="Male" selected>Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Row 2: Date of Birth & Nationality -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Date of Birth <span class="text-rose-400">*</span></label>
+                <input type="date" required value="1988-06-15" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Nationality <span class="text-rose-400">*</span></label>
+                <input type="text" required value="Australian" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+            </div>
+
+            <!-- Row 3: Passport Details -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-slate-800 pt-3">
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Passport Number</label>
+                <input type="text" value="PA9283741" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs uppercase">
+              </div>
+
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Passport Expiry Date</label>
+                <input type="date" value="2032-12-10" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+
+              <div>
+                <label class="block font-semibold text-slate-400 mb-1">Issuing Country</label>
+                <input type="text" value="Australia" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+              </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="border-t border-slate-800 pt-3 space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider">Contact & E-Ticket Delivery Details</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-semibold text-slate-400 mb-1">Email Address <span class="text-rose-400">*</span></label>
+                  <input type="email" required value="david.miller@example.com" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+                  <span class="text-[10px] text-slate-500">Your electronic PDF ticket will be sent here</span>
+                </div>
+
+                <div>
+                  <label class="block font-semibold text-slate-400 mb-1">Mobile Phone <span class="text-rose-400">*</span></label>
+                  <input type="tel" required value="+61 412 345 678" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white text-xs">
+                  <span class="text-[10px] text-slate-500">For instant SMS flight departure alerts</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add-ons Selection (matching FlightBookingFlow.tsx Step 3) -->
+            <div class="border-t border-slate-800 pt-3 space-y-2.5">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center justify-between">
+                <span>🧳 Flight Add-ons & Amenities</span>
+                <span class="text-[10px] text-blue-400 font-semibold">Optional Customizations</span>
+              </h3>
+              <div class="space-y-2">
+                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" checked class="rounded bg-slate-800 text-blue-600 focus:ring-0">
+                    <span class="text-slate-200">23kg Checked Baggage Allowance</span>
+                  </span>
+                  <span class="font-bold text-emerald-400">Included ($0 AUD)</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" checked class="rounded bg-slate-800 text-blue-600 focus:ring-0">
+                    <span class="text-slate-200">Forward Seat Selection (Window 14A)</span>
+                  </span>
+                  <span class="font-bold text-blue-400">+AUD $15.00</span>
+                </label>
+
+                <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/80 border border-slate-800 cursor-pointer hover:border-slate-700 transition-colors">
+                  <span class="flex items-center gap-2.5">
+                    <input type="checkbox" checked class="rounded bg-slate-800 text-blue-600 focus:ring-0">
+                    <span class="text-slate-200">Gourmet Inflight Breakfast & Beverage</span>
+                  </span>
+                  <span class="font-bold text-blue-400">+AUD $12.00</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Payment Simulation (matching FlightBookingFlow.tsx Step 4) -->
+            <div class="border-t border-slate-800 pt-3 space-y-3">
+              <h3 class="text-xs font-bold text-white uppercase tracking-wider flex items-center justify-between">
+                <span>💳 Payment Method (PCI-DSS Encrypted)</span>
+                <span class="text-[10px] text-emerald-400 font-semibold">● 256-Bit SSL</span>
+              </h3>
+              
+              <div class="p-4 rounded-xl bg-slate-950/90 border border-slate-800 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-white flex items-center gap-2">
+                    <span>💳 Credit or Debit Card</span>
+                    <span class="text-[10px] text-slate-400">(Visa, Mastercard, Amex)</span>
+                  </span>
+                  <div class="flex gap-1.5 text-xs">
+                    <span class="px-1.5 py-0.5 rounded bg-blue-900/60 text-blue-200 font-bold text-[10px]">VISA</span>
+                    <span class="px-1.5 py-0.5 rounded bg-red-900/60 text-red-200 font-bold text-[10px]">MC</span>
+                    <span class="px-1.5 py-0.5 rounded bg-sky-900/60 text-sky-200 font-bold text-[10px]">AMEX</span>
+                  </div>
+                </div>
+
+                <div class="space-y-2 text-xs">
+                  <div>
+                    <label class="block font-semibold text-slate-400 mb-1">Card Number</label>
+                    <input type="text" value="•••• •••• •••• 4242" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono tracking-wider">
+                  </div>
+                  <div class="grid grid-cols-2 gap-3">
+                    <div>
+                      <label class="block font-semibold text-slate-400 mb-1">Expires (MM/YY)</label>
+                      <input type="text" value="12/28" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono">
+                    </div>
+                    <div>
+                      <label class="block font-semibold text-slate-400 mb-1">CVC / CVV</label>
+                      <input type="password" value="•••" readonly class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3 py-2 text-white font-mono">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-4">
+              <button type="submit" class="w-full py-3.5 rounded-xl text-sm font-bold bg-blue-600 hover:bg-blue-500 text-white shadow-xl shadow-blue-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer">
+                <span>Confirm Booking & Issue E-Ticket ($176.00 AUD)</span>
+                <span>→</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right Column: Fare Breakdown Summary -->
+      <div class="space-y-4 sticky top-16">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl space-y-4">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 border-b border-slate-800 pb-2">
+            Fare Breakdown (AUD)
+          </h3>
+
+          <div class="space-y-2 text-xs">
+            <div class="flex justify-between text-slate-300">
+              <span>1x Adult Base Fare</span>
+              <span class="font-mono">AUD $115.00</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span>Airport Taxes & GST</span>
+              <span class="font-mono">AUD $34.00</span>
+            </div>
+            <div class="flex justify-between text-slate-300">
+              <span>Checked Baggage (23kg)</span>
+              <span class="text-emerald-400 font-bold">FREE</span>
+            </div>
+          </div>
+
+          <!-- Promo Code Input -->
+          <div class="border-t border-slate-800 pt-3 space-y-1.5">
+            <span class="text-[11px] font-semibold text-slate-400">Promotional Code</span>
+            <div class="flex gap-2">
+              <input type="text" placeholder="e.g. FLYSUMMER15" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-white uppercase w-full">
+              <button type="button" onclick="showToast('Promo code applied: $15 AUD discount')" class="px-3 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-slate-200">
+                Apply
+              </button>
+            </div>
+          </div>
+
+          <!-- Total Summary -->
+          <div class="border-t border-slate-800 pt-3 flex items-center justify-between">
+            <div>
+              <span class="block text-xs font-bold text-white">Total Amount</span>
+              <span class="text-[10px] text-slate-500">All fees & taxes included</span>
+            </div>
+            <span class="text-2xl font-black text-emerald-400">AUD $149.00</span>
+          </div>
+
+          <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3 text-[11px] text-slate-400 space-y-1">
+            <div class="flex items-center gap-1.5 text-emerald-400 font-bold">
+              <span>🛡️</span>
+              <span>Best Rate Guarantee</span>
+            </div>
+            <p>Direct GDS wholesale rate confirmed. Instant PNR booking code issued immediately upon submission.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ==================== POPUP MODAL: QUICK-FILL SAVED TRAVELERS ==================== -->
+  <div id="quick-traveler-modal" class="modal-backdrop">
+    <div class="modal-box p-6 space-y-4 max-w-lg">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>👥</span>
+          <span>Quick Traveler Library</span>
+        </h3>
+        <button type="button" onclick="closeModal('quick-traveler-modal')" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Click any saved traveler profile to automatically populate all mandatory passenger credentials:
+      </p>
+
+      <div class="space-y-2">
+        <!-- Traveler 1 -->
+        <button type="button" onclick="fillTraveler('David', 'Miller', 'Male'); closeModal('quick-traveler-modal'); showToast('Populated: David Miller (Male)');" class="w-full text-left p-3 rounded-xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 transition-all flex items-center justify-between group">
+          <div>
+            <div class="text-xs font-bold text-white group-hover:text-indigo-400">David Miller</div>
+            <div class="text-[11px] text-slate-400">Gender: <span class="text-emerald-400 font-bold">Male</span> • DOB: 15 Jun 1988 • Passport: PA9283741</div>
+          </div>
+          <span class="text-xs font-bold text-indigo-400">Select →</span>
+        </button>
+
+        <!-- Traveler 2 -->
+        <button type="button" onclick="fillTraveler('Sarah', 'Miller', 'Female'); closeModal('quick-traveler-modal'); showToast('Populated: Sarah Miller (Female)');" class="w-full text-left p-3 rounded-xl bg-slate-950 hover:bg-slate-800/80 border border-slate-800 transition-all flex items-center justify-between group">
+          <div>
+            <div class="text-xs font-bold text-white group-hover:text-indigo-400">Sarah Miller</div>
+            <div class="text-[11px] text-slate-400">Gender: <span class="text-pink-400 font-bold">Female</span> • DOB: 22 Aug 1991 • Passport: PA1092834</div>
+          </div>
+          <span class="text-xs font-bold text-indigo-400">Select →</span>
+        </button>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="button" onclick="closeModal('quick-traveler-modal')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC FOOTER ==================== -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800/60">
+        <div class="lg:col-span-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✈️</span>
+            <span class="font-extrabold text-lg text-white tracking-tight">Indore Travels</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your trusted travel partner. Seamless flight bookings, verified hotels, and flexible car rentals with instant confirmation.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-400">
+            <p class="flex items-center gap-2"><span>📞</span> <a href="tel:+18005550199" class="hover:text-blue-400 transition-colors font-medium">+1 (800) 555-0199</a></p>
+            <p class="flex items-center gap-2"><span>✉️</span> <a href="mailto:support@indoretravels.com" class="hover:text-blue-400 transition-colors">support@indoretravels.com</a></p>
+            <p class="flex items-center gap-2"><span>📍</span> <span>Global Partner Hub</span></p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Press & Media</a></li>
+            <li><a href="../agency_admin/01_dashboard.html" class="hover:text-emerald-400 transition-colors font-semibold text-indigo-400">Partner With Us (B2B)</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Help & FAQ</a></li>
+            <li><a href="09_my_bookings.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Manage My Bookings</a></li>
+            <li><a href="08_retrieve_pnr.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Retrieve PNR (E-Tickets & Vouchers)</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cancellation & Refund Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">24/7 Support Hub</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Legal & Compliance</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security & Data Protection</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Travel Services</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="02_flight_results.html" class="hover:text-emerald-400 transition-colors">Flight Booking</a></li>
+            <li><a href="05_hotel_results.html" class="hover:text-emerald-400 transition-colors">Hotel Reservations</a></li>
+            <li><a href="07_car_rental.html" class="hover:text-emerald-400 transition-colors">Chauffeur & Fleet Rental</a></li>
+            <li><a href="11_favorite_searches.html" class="hover:text-emerald-400 transition-colors">Saved Searches Vault</a></li>
+            <li><a href="04_flight_ticket.html" class="hover:text-emerald-400 transition-colors">Sample E-Ticket PDF</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 Travel CARE Trip Platform. All Rights Reserved.</p>
+        <div class="flex items-center gap-4 text-slate-400 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> PCI-DSS Certified</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> SSL 256-Bit Encrypted</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> IATA Accredited Partner</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/walkthrough.js"></script>
+  <script>
+    function fillTraveler(first, last, gender) {
+      document.getElementById('pax-firstname').value = first;
+      document.getElementById('pax-lastname').value = last;
+      document.getElementById('pax-gender').value = gender;
+    }
+  </script>
+</body>
+</html>

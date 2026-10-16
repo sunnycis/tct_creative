@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indore Travels — Official Travel & Tourism Portal</title>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 400: '#818cf8', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans">
+
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border-sky-400/40 border">
+        Creative Theme • B2C Customer (1/11)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">Public Storefront & Search Terminal</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/b2c/01_landing_page.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/b2c/01_landing_page.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="02_flight_results.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: Flight Results →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ==================== PUBLIC NAVBAR (Exact Live PublicNavbar.tsx) ==================== -->
+  <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-10 z-40 text-slate-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Branding -->
+        <a href="01_landing_page.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary-500/25 group-hover:scale-105 transition-transform">
+            ✈️
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white tracking-tight group-hover:text-primary-400 transition-colors">
+              Indore Travels
+            </span>
+            <span class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">
+              TRAVEL & TOURISM PORTAL
+            </span>
+          </div>
+        </a>
+
+        <!-- Main Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="01_landing_page.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-primary-600/20 text-primary-400 border border-primary-500/30">
+            Home
+          </a>
+          <a href="02_flight_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Flights ✈
+          </a>
+          <a href="05_hotel_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Hotels 🏨
+          </a>
+          <a href="07_car_rental.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Cars 🚗
+          </a>
+          <a href="08_retrieve_pnr.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Retrieve PNR 🎫
+          </a>
+        </nav>
+
+        <!-- Right Action Menu -->
+        <div class="hidden md:flex items-center gap-3">
+          <!-- Language Selector Toggle -->
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-full p-0.5 shadow-xs">
+            <button type="button" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-xs">
+              EN
+            </button>
+            <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full text-xs font-semibold text-slate-300 hover:text-white">
+              FR
+            </button>
+          </div>
+
+          <a href="../agency_admin/01_dashboard.html" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-200 hover:text-white hover:bg-slate-800/80 transition-colors">
+            Sign In
+          </a>
+          <a href="09_my_bookings.html" class="px-4 py-2 rounded-xl text-xs font-semibold bg-primary-600 hover:bg-primary-500 text-white shadow-md shadow-primary-600/25 transition-all">
+            Register
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN PAGE BODY ==================== -->
+  <main class="flex-1">
+
+        <!-- ==================== HERO SECTION: FULL-BLEED MAKE-MY-TRIP ARCHITECTURE ==================== -->
+    <section class="relative z-20 w-full min-h-[680px] lg:min-h-[740px] flex flex-col justify-between pt-8 lg:pt-12 pb-20 lg:pb-28 overflow-hidden">
+      
+      <!-- Dynamic Panoramic Background Images with Cross-Fade -->
+      <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <!-- Flights Hero Background (Unbranded Airbus A350) -->
+        <img
+          id="hero-bg-flights"
+          src="../images/hero/hero_plane_flight.jpg"
+          alt="Flight hero background"
+          class="absolute inset-0 w-full h-full object-cover object-center lg:object-right-center transition-all duration-700 ease-in-out opacity-100 scale-100"
+        />
+        <!-- Hotels Hero Background (Unbranded 5-Star Reception - Clean Illuminated Marble) -->
+        <img
+          id="hero-bg-hotels"
+          src="../images/hero/hero_hotel_reception.jpg"
+          alt="Hotel hero background"
+          class="absolute inset-0 w-full h-full object-cover object-center lg:object-right-center transition-all duration-700 ease-in-out opacity-0 scale-105 pointer-events-none"
+        />
+        <!-- Cars Hero Background (Executive Chauffeur Fleet) -->
+        <img
+          id="hero-bg-cars"
+          src="../images/hero/hero_car_chauffeur.jpg"
+          alt="Car hero background"
+          class="absolute inset-0 w-full h-full object-cover object-center lg:object-right-center transition-all duration-700 ease-in-out opacity-0 scale-105 pointer-events-none"
+        />
+        <!-- PNR Hero Background -->
+        <img
+          id="hero-bg-pnr"
+          src="../images/hero/hero_plane_flight.jpg"
+          alt="PNR hero background"
+          class="absolute inset-0 w-full h-full object-cover object-center lg:object-right-center transition-all duration-700 ease-in-out opacity-0 scale-105 pointer-events-none"
+        />
+
+        <!-- Soft Directional Scrims: Text Readable on Left, Aircraft/Hotel Crisp on Right -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/30 to-transparent pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent pointer-events-none"></div>
+      </div>
+
+      <!-- Centered Inner Content Container -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col justify-between flex-1">
+        
+        <!-- Hero Text Header -->
+        <div class="text-left max-w-3xl pt-2 lg:pt-4">
+          <!-- Sleek Partner Portal Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 border border-emerald-500/30 text-xs font-semibold shadow-lg mb-4">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span id="hero-badge-text">✈️ Aviation Fleet & Global GDS Inventory — Travel CARE Trip</span>
+          </div>
+
+          <!-- Headline -->
+          <h1 id="hero-headline" class="text-4xl lg:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)] transition-all duration-300">
+            Discover New Horizons
+          </h1>
+          
+          <!-- Subtitle -->
+          <p id="hero-subtitle" class="mt-3 text-base lg:text-lg text-slate-100 font-medium max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] transition-all duration-300">
+            Search live rates across global airlines, premium nonstop routes, and instant e-tickets. No account required.
+          </p>
+        </div>
+
+        <!-- ==================== SEARCH TABBED BOX: TRANSLUCENT FROSTED GLASS CONSOLE ==================== -->
+        <div class="mt-8 bg-slate-950/35 backdrop-blur-xl border border-white/25 rounded-3xl p-5 lg:p-7 shadow-[0_16px_50px_rgba(0,0,0,0.5)] max-w-5xl mx-auto text-left ring-1 ring-white/15 w-full">
+          
+          <!-- Tabs Header (Modern Glowing Underline Pills) -->
+          <div class="flex border-b border-white/20 mb-6 gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">
+            <button
+              type="button"
+              id="tab-btn-flights"
+              onclick="switchHeroTab('flights')"
+              class="pb-3 px-4 font-extrabold text-sm transition-all border-b-2 flex items-center gap-2 cursor-pointer border-sky-400 text-sky-300 bg-sky-500/20 rounded-t-xl"
+            >
+              ✈️ Flights
+            </button>
+            <button
+              type="button"
+              id="tab-btn-hotels"
+              onclick="switchHeroTab('hotels')"
+              class="pb-3 px-4 font-extrabold text-sm transition-all border-b-2 flex items-center gap-2 cursor-pointer border-transparent text-slate-300 hover:text-white hover:bg-white/10 rounded-t-xl"
+            >
+              🏨 Hotels
+            </button>
+            <button
+              type="button"
+              id="tab-btn-cars"
+              onclick="switchHeroTab('cars')"
+              class="pb-3 px-4 font-extrabold text-sm transition-all border-b-2 flex items-center gap-2 cursor-pointer border-transparent text-slate-300 hover:text-white hover:bg-white/10 rounded-t-xl"
+            >
+              🚗 Car Rental
+            </button>
+            <button
+              type="button"
+              id="tab-btn-pnr"
+              onclick="switchHeroTab('pnr')"
+              class="pb-3 px-4 font-extrabold text-sm transition-all border-b-2 flex items-center gap-2 cursor-pointer border-transparent text-slate-300 hover:text-white hover:bg-white/10 rounded-t-xl"
+            >
+              🎫 Retrieve PNR
+            </button>
+          </div>
+
+          <!-- ==================== 1. FLIGHT SEARCH TAB ==================== -->
+          <div id="tab-content-flights" class="space-y-4">
+            <div class="flex items-center gap-6 text-sm text-slate-200 font-bold drop-shadow-sm">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="tripType" value="oneWay" checked onchange="toggleTripType('oneWay')" class="accent-sky-500">
+                One Way
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="tripType" value="roundTrip" onchange="toggleTripType('roundTrip')" class="accent-sky-500">
+                Round Trip
+              </label>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4" id="flight-inputs-grid">
+              
+              <!-- From (Origin) -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">From (Origin)</label>
+                <input
+                  type="text"
+                  id="origin-input"
+                  value="SYD"
+                  onfocus="showAirportDropdown('origin')"
+                  onblur="hideAirportDropdown('origin')"
+                  placeholder="Search city or code (e.g. MEL)"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none font-mono tracking-wide"
+                />
+                <div id="origin-dropdown" class="hidden absolute left-0 top-full mt-1.5 w-full min-w-[280px] max-w-sm bg-slate-900 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto z-50 divide-y divide-slate-800/80">
+                  <div class="p-2 text-left">
+                    <div onclick="selectAirport('origin', 'SYD', 'Sydney (Kingsford Smith)')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Sydney (SYD)</div><div class="text-[10px] text-slate-400">Kingsford Smith, Australia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">SYD</span>
+                    </div>
+                    <div onclick="selectAirport('origin', 'MEL', 'Melbourne (Tullamarine)')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Melbourne (MEL)</div><div class="text-[10px] text-slate-400">Tullamarine, Australia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">MEL</span>
+                    </div>
+                    <div onclick="selectAirport('origin', 'BNE', 'Brisbane Airport')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Brisbane (BNE)</div><div class="text-[10px] text-slate-400">Brisbane, Australia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">BNE</span>
+                    </div>
+                    <div onclick="selectAirport('origin', 'PER', 'Perth Airport')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Perth (PER)</div><div class="text-[10px] text-slate-400">Perth, Australia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">PER</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- To (Destination) -->
+              <div class="relative">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">To (Destination)</label>
+                <input
+                  type="text"
+                  id="dest-input"
+                  value="MEL"
+                  onfocus="showAirportDropdown('dest')"
+                  onblur="hideAirportDropdown('dest')"
+                  placeholder="Search city or code (e.g. SYD)"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none font-mono tracking-wide"
+                />
+                <div id="dest-dropdown" class="hidden absolute left-0 top-full mt-1.5 w-full min-w-[280px] max-w-sm bg-slate-900 border border-slate-700 rounded-xl shadow-2xl max-h-60 overflow-y-auto z-50 divide-y divide-slate-800/80">
+                  <div class="p-2 text-left">
+                    <div onclick="selectAirport('dest', 'MEL', 'Melbourne (Tullamarine)')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Melbourne (MEL)</div><div class="text-[10px] text-slate-400">Tullamarine, Australia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">MEL</span>
+                    </div>
+                    <div onclick="selectAirport('dest', 'SIN', 'Singapore Changi')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Singapore (SIN)</div><div class="text-[10px] text-slate-400">Changi, Singapore</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">SIN</span>
+                    </div>
+                    <div onclick="selectAirport('dest', 'DPS', 'Bali (Ngurah Rai)')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Bali Denpasar (DPS)</div><div class="text-[10px] text-slate-400">Ngurah Rai, Indonesia</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">DPS</span>
+                    </div>
+                    <div onclick="selectAirport('dest', 'HND', 'Tokyo Haneda')" class="p-2 hover:bg-slate-800 rounded-lg cursor-pointer flex justify-between items-center">
+                      <div><div class="text-xs font-bold text-white">Tokyo (HND)</div><div class="text-[10px] text-slate-400">Haneda, Japan</div></div>
+                      <span class="text-xs font-mono font-bold text-sky-400 px-2 py-0.5 bg-sky-500/10 rounded">HND</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Departure Date -->
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Departure Date</label>
+                <input
+                  type="date"
+                  value="2026-10-22"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+
+              <!-- Return Date (conditional) -->
+              <div id="return-date-col" class="hidden">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Return Date</label>
+                <input
+                  type="date"
+                  value="2026-10-29"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+
+              <!-- Passengers & Class -->
+              <div class="relative" id="pax-picker-container">
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Passengers & Class</label>
+                <button
+                  type="button"
+                  onclick="togglePaxDropdown()"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none flex items-center justify-between cursor-pointer"
+                >
+                  <span class="truncate font-bold text-slate-900" id="pax-summary-text">👥 1 Adult • Economy</span>
+                  <span class="text-slate-500 text-xs ml-2">▼</span>
+                </button>
+
+                <!-- Floating Popover -->
+                <div id="pax-dropdown-panel" class="hidden absolute right-0 top-full mt-2 w-80 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl p-4 z-50 space-y-4">
+                  <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <span class="text-xs font-bold text-white uppercase tracking-wider">Select Travelers</span>
+                    <span id="total-pax-badge" class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/20 text-sky-300">Total: 1/9</span>
+                  </div>
+
+                  <!-- Adults -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-white">Adults</div>
+                      <div class="text-[10px] text-slate-400">Age 12+ years</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <button type="button" onclick="adjustPax('adults', -1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">-</button>
+                      <span id="count-adults" class="text-xs font-bold text-white w-4 text-center">1</span>
+                      <button type="button" onclick="adjustPax('adults', 1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">+</button>
+                    </div>
+                  </div>
+
+                  <!-- Children -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-white">Children</div>
+                      <div class="text-[10px] text-slate-400">Age 2-11 years</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <button type="button" onclick="adjustPax('children', -1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">-</button>
+                      <span id="count-children" class="text-xs font-bold text-white w-4 text-center">0</span>
+                      <button type="button" onclick="adjustPax('children', 1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">+</button>
+                    </div>
+                  </div>
+
+                  <!-- Infants -->
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <div class="text-xs font-bold text-white">Infants</div>
+                      <div class="text-[10px] text-slate-400">Under 2 years (lap)</div>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <button type="button" onclick="adjustPax('infants', -1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">-</button>
+                      <span id="count-infants" class="text-xs font-bold text-white w-4 text-center">0</span>
+                      <button type="button" onclick="adjustPax('infants', 1)" class="w-7 h-7 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-bold flex items-center justify-center text-sm">+</button>
+                    </div>
+                  </div>
+
+                  <!-- Cabin Class -->
+                  <div class="pt-2 border-t border-slate-800">
+                    <label class="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1">Cabin Class</label>
+                    <select id="cabin-select" onchange="updatePaxSummary()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white">
+                      <option value="Economy">Economy</option>
+                      <option value="Premium Economy">Premium Economy</option>
+                      <option value="Business">Business Class</option>
+                      <option value="First">First Class</option>
+                    </select>
+                  </div>
+
+                  <button type="button" onclick="togglePaxDropdown()" class="w-full py-2 bg-sky-600 hover:bg-sky-500 text-white text-xs font-bold rounded-lg transition-all">
+                    Apply Travelers
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Action Button -->
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-xs text-slate-300 drop-shadow-sm font-medium">
+                ⚡ Instant live GDS inventory feed with direct airline ticketing
+              </span>
+              <a href="02_flight_results.html" class="px-8 py-3 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-sky-600/30 transition-all flex items-center gap-2 cursor-pointer">
+                <span>Search Flights</span>
+                <span>✈️</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ==================== 2. HOTEL SEARCH TAB ==================== -->
+          <div id="tab-content-hotels" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Destination City or Hotel</label>
+                <input
+                  type="text"
+                  value="Sydney, NSW, Australia"
+                  placeholder="e.g. Paris, Tokyo, Sydney"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Check-in Date</label>
+                <input
+                  type="date"
+                  value="2026-10-22"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Check-out Date</label>
+                <input
+                  type="date"
+                  value="2026-10-26"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Guests & Rooms</label>
+                <select class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none">
+                  <option>2 Guests • 1 Room</option>
+                  <option>1 Guest • 1 Room</option>
+                  <option>3 Guests • 1 Room</option>
+                  <option>4 Guests • 2 Rooms</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-xs text-amber-300 drop-shadow-sm font-medium">
+                🏨 750,000+ verified luxury hotels with instant confirmation
+              </span>
+              <a href="05_hotel_results.html" class="px-8 py-3 bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-amber-600/30 transition-all flex items-center gap-2 cursor-pointer">
+                <span>Search Luxury Hotels</span>
+                <span>🏨</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ==================== 3. CAR RENTAL TAB ==================== -->
+          <div id="tab-content-cars" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Pick-up Location</label>
+                <input
+                  type="text"
+                  value="Sydney Kingsford Smith Airport (SYD)"
+                  placeholder="e.g. Sydney Airport"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Drop-off Location</label>
+                <input
+                  type="text"
+                  value="Melbourne City Centre"
+                  placeholder="e.g. Melbourne City"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Pick-up Date & Time</label>
+                <input
+                  type="datetime-local"
+                  value="2026-10-22T10:00"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-xs text-emerald-300 drop-shadow-sm font-medium">
+                🚗 Verified chauffeur fleets & sedans at transparent per-km rates
+              </span>
+              <a href="07_car_rental.html" class="px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-2 cursor-pointer">
+                <span>Request Chauffeur Fleet</span>
+                <span>🚗</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ==================== 4. RETRIEVE PNR TAB ==================== -->
+          <div id="tab-content-pnr" class="hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">6-Character PNR / Booking Reference</label>
+                <input
+                  type="text"
+                  value="QF-789214"
+                  placeholder="e.g. QF-789214"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none font-mono uppercase"
+                />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-200 mb-1.5 drop-shadow-sm">Passenger Last Name or Email</label>
+                <input
+                  type="text"
+                  value="Jenkins"
+                  placeholder="e.g. Jenkins or sarah@domain.com"
+                  class="w-full bg-white/95 hover:bg-white focus:bg-white border border-white/40 text-slate-900 font-bold px-3 py-2.5 rounded-xl shadow-xs transition-all outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="pt-3 flex items-center justify-between">
+              <span class="text-xs text-sky-300 drop-shadow-sm font-medium">
+                🎫 Instant access to confirmed e-tickets, hotel vouchers & receipts
+              </span>
+              <a href="08_retrieve_pnr.html" class="px-8 py-3 bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-extrabold text-sm rounded-xl shadow-lg shadow-sky-600/30 transition-all flex items-center gap-2 cursor-pointer">
+                <span>Retrieve Itinerary</span>
+                <span>🎫</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 1: PROMOTIONAL OFFERS & DISCOUNTS ==================== -->
+    <section class="py-12 bg-slate-950/80 border-t border-slate-800/80 px-4 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+              🔥 Exclusive Deals & Seasonal Discounts
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Special promotional codes and instant savings applied directly at checkout.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Promo Card 1 -->
+          <div class="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-slate-700/80 p-5 shadow-xl hover:border-primary-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="h-32 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=80"
+                alt="Early Bird Flight Sale"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs shadow-lg">
+                15% OFF
+              </span>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-lg text-white group-hover:text-primary-300 transition-colors">
+                Early Bird Flight Sale
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Get 15% off international flights with code FLYSUMMER15
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">
+                🌐 Platform Offer
+              </span>
+              <a href="02_flight_results.html" class="px-4 py-2 bg-primary-600/20 hover:bg-primary-600 text-primary-300 hover:text-white border border-primary-500/30 text-xs font-bold rounded-xl transition-all cursor-pointer">
+                Claim Offer →
+              </a>
+            </div>
+          </div>
+
+          <!-- Promo Card 2 -->
+          <div class="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-slate-700/80 p-5 shadow-xl hover:border-primary-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="h-32 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+                alt="Weekend Hotel Getaway"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs shadow-lg">
+                $50 AUD OFF
+              </span>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-lg text-white group-hover:text-primary-300 transition-colors">
+                Weekend Hotel Getaway
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                Save up to $50 AUD on stays of 2+ nights
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">
+                🌐 Platform Offer
+              </span>
+              <a href="05_hotel_results.html" class="px-4 py-2 bg-primary-600/20 hover:bg-primary-600 text-primary-300 hover:text-white border border-primary-500/30 text-xs font-bold rounded-xl transition-all cursor-pointer">
+                Claim Offer →
+              </a>
+            </div>
+          </div>
+
+          <!-- Promo Card 3 -->
+          <div class="group relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 rounded-2xl border border-slate-700/80 p-5 shadow-xl hover:border-primary-500/50 transition-all duration-300 flex flex-col justify-between">
+            <div class="h-32 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+              <img
+                src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
+                alt="Car Rental Special"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-extrabold text-xs shadow-lg">
+                10% REBATE
+              </span>
+            </div>
+
+            <div>
+              <h3 class="font-bold text-lg text-white group-hover:text-primary-300 transition-colors">
+                Car Rental Special
+              </h3>
+              <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                10% rebate on airport vehicle hires
+              </p>
+            </div>
+
+            <div class="mt-5 pt-4 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">
+                🌐 Platform Offer
+              </span>
+              <a href="07_car_rental.html" class="px-4 py-2 bg-primary-600/20 hover:bg-primary-600 text-primary-300 hover:text-white border border-primary-500/30 text-xs font-bold rounded-xl transition-all cursor-pointer">
+                Claim Offer →
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: POPULAR FLIGHT CORRIDORS ==================== -->
+    <section class="py-12 bg-slate-900 border-t border-slate-800/80 px-4 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+              ✈️ Popular Flight Corridors & Fares
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Direct 1-click booking pathways for top domestic and international flight routes.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Route 1 -->
+          <a href="02_flight_results.html" class="group bg-slate-800/90 border border-slate-700/80 hover:border-indigo-500/60 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between block">
+            <div>
+              <div class="h-28 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80"
+                  alt="Sydney to Melbourne"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-bold text-[11px] shadow-sm">
+                  Popular Route
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                Sydney to Melbourne
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 truncate">
+                Direct • 1h 35m • Daily Flights
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Fares Starting From</span>
+                <span class="text-base font-extrabold text-emerald-400 font-mono">$89 AUD</span>
+              </div>
+              <span class="w-8 h-8 rounded-full bg-slate-700 group-hover:bg-indigo-600 text-white text-sm flex items-center justify-center transition-colors">
+                ✈️
+              </span>
+            </div>
+          </a>
+
+          <!-- Route 2 -->
+          <a href="02_flight_results.html" class="group bg-slate-800/90 border border-slate-700/80 hover:border-indigo-500/60 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between block">
+            <div>
+              <div class="h-28 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80"
+                  alt="Sydney to Bali"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-bold text-[11px] shadow-sm">
+                  Hot Deal
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                Sydney to Bali
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 truncate">
+                Direct • 6h 15m • Tropical Escape
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Fares Starting From</span>
+                <span class="text-base font-extrabold text-emerald-400 font-mono">$349 AUD</span>
+              </div>
+              <span class="w-8 h-8 rounded-full bg-slate-700 group-hover:bg-indigo-600 text-white text-sm flex items-center justify-center transition-colors">
+                ✈️
+              </span>
+            </div>
+          </a>
+
+          <!-- Route 3 -->
+          <a href="02_flight_results.html" class="group bg-slate-800/90 border border-slate-700/80 hover:border-indigo-500/60 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between block">
+            <div>
+              <div class="h-28 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=800&q=80"
+                  alt="Melbourne to Singapore"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-bold text-[11px] shadow-sm">
+                  Best Price
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                Melbourne to Singapore
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 truncate">
+                Direct • 7h 40m • Premium Airlines
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Fares Starting From</span>
+                <span class="text-base font-extrabold text-emerald-400 font-mono">$429 AUD</span>
+              </div>
+              <span class="w-8 h-8 rounded-full bg-slate-700 group-hover:bg-indigo-600 text-white text-sm flex items-center justify-center transition-colors">
+                ✈️
+              </span>
+            </div>
+          </a>
+
+          <!-- Route 4 -->
+          <a href="02_flight_results.html" class="group bg-slate-800/90 border border-slate-700/80 hover:border-indigo-500/60 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between block">
+            <div>
+              <div class="h-28 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80"
+                  alt="Sydney to Tokyo"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-indigo-500 text-white font-bold text-[11px] shadow-sm">
+                  Trending
+                </span>
+              </div>
+              <h3 class="font-bold text-base text-white group-hover:text-indigo-300 transition-colors">
+                Sydney to Tokyo
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 truncate">
+                Direct • 9h 45m • Sakura Season
+              </p>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Fares Starting From</span>
+                <span class="text-base font-extrabold text-emerald-400 font-mono">$689 AUD</span>
+              </div>
+              <span class="w-8 h-8 rounded-full bg-slate-700 group-hover:bg-indigo-600 text-white text-sm flex items-center justify-center transition-colors">
+                ✈️
+              </span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: TRENDING DESTINATIONS ==================== -->
+    <section class="py-12 bg-slate-950/60 border-t border-slate-800/80 px-4 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+              🏖️ Explore Top Trending Destinations
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Discover iconic cities, vibrant culture, and world-class luxury stays.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Dest 1: Sydney -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=800&q=80"
+                alt="Sydney, Australia"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Top Pick
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">Sydney, Australia</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Harbour views, beaches & iconic landmarks</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$135 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+          <!-- Dest 2: Melbourne -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=800&q=80"
+                alt="Melbourne, Australia"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Cultural Hub
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">Melbourne, Australia</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Coffee capital, arts & boutique laneways</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$119 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+          <!-- Dest 3: Gold Coast -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80"
+                alt="Gold Coast, Australia"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Beach Resort
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">Gold Coast, Australia</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Surfers paradise, nightlife & theme parks</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$145 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+          <!-- Dest 4: Bali -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80"
+                alt="Bali, Indonesia"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Island Paradise
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">Bali, Indonesia</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Tropical beaches, rice terraces & luxury villas</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$85 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+          <!-- Dest 5: Tokyo -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=800&q=80"
+                alt="Tokyo, Japan"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Bucket List
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">Tokyo, Japan</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Neon lights, world-class cuisine & historic temples</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$175 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+          <!-- Dest 6: London -->
+          <div class="group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-600 transition-all flex flex-col justify-between">
+            <div class="relative h-48 overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=800&q=80"
+                alt="London, United Kingdom"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/30 to-transparent"></div>
+              <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-950/80 text-white font-bold text-xs border border-slate-700 backdrop-blur">
+                Global Iconic
+              </span>
+              <div class="absolute bottom-3 left-4 right-4">
+                <h3 class="text-xl font-extrabold text-white">London, United Kingdom</h3>
+                <p class="text-xs text-slate-300 truncate mt-0.5">Historic charm, royal palaces & West End shows</p>
+              </div>
+            </div>
+            <div class="p-4 bg-slate-900/90 flex items-center justify-between border-t border-slate-800">
+              <div>
+                <span class="text-[11px] text-slate-400 block">Hotels From</span>
+                <span class="text-sm font-extrabold text-emerald-400 font-mono">$195 AUD / night</span>
+              </div>
+              <a href="05_hotel_results.html" class="px-3.5 py-1.5 bg-primary-600 hover:bg-primary-500 text-white text-xs font-bold rounded-xl transition-all shadow-md cursor-pointer">
+                Explore Stay 🏨
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: CURATED HOTEL COLLECTIONS ==================== -->
+    <section class="py-12 bg-slate-900 border-t border-slate-800/80 px-4 lg:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-white flex items-center gap-2">
+              🏨 Curated Stay Experiences & Collections
+            </h2>
+            <p class="text-sm text-slate-400 mt-1">
+              Handpicked hotel collections tailored for every travel style and family size.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Collection 1: Heritage Hotels -->
+          <div class="group bg-slate-800/90 border border-slate-700/80 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="h-36 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=800&q=80"
+                  alt="Heritage Hotels"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-emerald-600 text-white font-bold text-xs shadow-md">
+                  Heritage
+                </span>
+              </div>
+              <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition-colors">
+                Heritage Hotels
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Stylish stays located right in the heart of shopping & dining
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">From $150 AUD</span>
+              <a href="05_hotel_results.html" class="text-xs font-bold text-emerald-400 group-hover:underline">Browse Collection →</a>
+            </div>
+          </div>
+
+          <!-- Collection 2: Luxury Beachfront Resorts -->
+          <div class="group bg-slate-800/90 border border-slate-700/80 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="h-36 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=800&q=80"
+                  alt="Luxury Beachfront Resorts"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-emerald-600 text-white font-bold text-xs shadow-md">
+                  5-Star Luxury
+                </span>
+              </div>
+              <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition-colors">
+                Luxury Beachfront Resorts
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                5-Star oceanfront retreats with private pools & spa services
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">From $280 AUD</span>
+              <a href="05_hotel_results.html" class="text-xs font-bold text-emerald-400 group-hover:underline">Browse Collection →</a>
+            </div>
+          </div>
+
+          <!-- Collection 3: Boutique City-Center Hotels -->
+          <div class="group bg-slate-800/90 border border-slate-700/80 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="h-36 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80"
+                  alt="Boutique City-Center Hotels"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-emerald-600 text-white font-bold text-xs shadow-md">
+                  Prime Location
+                </span>
+              </div>
+              <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition-colors">
+                Boutique City-Center Hotels
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Stylish stays located right in the heart of shopping & dining
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">From $160 AUD</span>
+              <a href="05_hotel_results.html" class="text-xs font-bold text-emerald-400 group-hover:underline">Browse Collection →</a>
+            </div>
+          </div>
+
+          <!-- Collection 4: Family-Friendly Suites -->
+          <div class="group bg-slate-800/90 border border-slate-700/80 hover:border-emerald-500/50 rounded-2xl p-5 shadow-lg hover:shadow-2xl transition-all cursor-pointer flex flex-col justify-between">
+            <div>
+              <div class="h-36 -mx-5 -mt-5 mb-4 rounded-t-2xl overflow-hidden relative">
+                <img
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80"
+                  alt="Family-Friendly Suites"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-emerald-600 text-white font-bold text-xs shadow-md">
+                  Family Choice
+                </span>
+              </div>
+              <h3 class="font-bold text-lg text-white group-hover:text-emerald-300 transition-colors">
+                Family-Friendly Suites
+              </h3>
+              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
+                Spacious multi-room apartments with kitchenettes & pool access
+              </p>
+            </div>
+            <div class="mt-5 pt-3 border-t border-slate-700/60 flex items-center justify-between">
+              <span class="text-xs text-slate-400 font-mono">From $190 AUD</span>
+              <a href="05_hotel_results.html" class="text-xs font-bold text-emerald-400 group-hover:underline">Browse Collection →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: TRUST HIGHLIGHTS & AGENCY SUPPORT ==================== -->
+    <section class="py-12 bg-slate-950/60 border-t border-slate-800/80 px-4 lg:px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 text-center">
+          <div class="w-12 h-12 rounded-xl bg-primary-500/10 text-primary-400 text-2xl flex items-center justify-center mx-auto mb-4">
+            ⚡
+          </div>
+          <h3 class="font-bold text-lg text-white">Instant E-Tickets & Vouchers</h3>
+          <p class="text-sm text-slate-400 mt-2">
+            Get immediate confirmation with printable A4 flight tickets and hotel vouchers as soon as booking is complete.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 text-center">
+          <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 text-2xl flex items-center justify-center mx-auto mb-4">
+            🛡️
+          </div>
+          <h3 class="font-bold text-lg text-white">Best Rate Guarantee</h3>
+          <p class="text-sm text-slate-400 mt-2">
+            Dynamic pricing comparison across global supplier networks ensuring the best rates in AUD.
+          </p>
+        </div>
+
+        <div class="bg-slate-900/80 p-6 rounded-2xl border border-slate-800 text-center">
+          <div class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 text-2xl flex items-center justify-center mx-auto mb-4">
+            📞
+          </div>
+          <h3 class="font-bold text-lg text-white">24/7 Agency Support</h3>
+          <p class="text-sm text-slate-400 mt-2">
+            Backed directly by Travel CARE Trip staff for personalized modifications, cancellations, and driver assignments.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== PUBLIC FOOTER (Exact Live PublicFooter.tsx) ==================== -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto">
+      
+      <!-- Main Footer Grid (5 Columns) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800/60">
+        
+        <!-- Column 1: Agency Info & Branding -->
+        <div class="lg:col-span-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✈️</span>
+            <span class="font-extrabold text-lg text-white tracking-tight">Indore Travels</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your complete travel solution. Book flights, luxury hotels, and rental vehicles with guaranteed best rates globally.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-400">
+            <p class="flex items-center gap-2">
+              <span>📞</span>
+              <a href="tel:+18005550199" class="hover:text-emerald-400 transition-colors font-medium">
+                +1 (800) 555-0199
+              </a>
+            </p>
+            <p class="flex items-center gap-2">
+              <span>✉️</span>
+              <a href="mailto:support@indore.travel.com" class="hover:text-emerald-400 transition-colors">
+                support@indore.travel.com
+              </a>
+            </p>
+            <p class="flex items-center gap-2">
+              <span>📍</span>
+              <span>Global Travel Hub</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Column 2: Company & About -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Press & Media</a></li>
+            <li><a href="../sub_agent/01_dashboard.html" class="hover:text-emerald-400 transition-colors">Partner With Us (B2B)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Care -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Help & FAQ</a></li>
+            <li><a href="09_my_bookings.html" class="hover:text-emerald-400 transition-colors">Manage My Bookings</a></li>
+            <li><a href="08_retrieve_pnr.html" class="hover:text-emerald-400 transition-colors">Retrieve PNR (E-Tickets & Vouchers)</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cancellation & Refund Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">24/7 Support Hub</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Legal & Policies -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Legal & Compliance</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security & Data Protection</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Travel Services -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Travel Services</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="02_flight_results.html" class="hover:text-emerald-400 transition-colors">Flight Booking</a></li>
+            <li><a href="05_hotel_results.html" class="hover:text-emerald-400 transition-colors">Hotel Reservations</a></li>
+            <li><a href="07_car_rental.html" class="hover:text-emerald-400 transition-colors">Car Rental & Chauffeur</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Special Deals & Promo Codes</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Travel Insurance Coverage</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        
+        <!-- Payment Badges -->
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500 mr-2">Secure Payments:</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">VISA</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">MC</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">AMEX</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-indigo-400">Stripe 🔒</span>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center gap-4 text-slate-400">
+          <a href="#" class="hover:text-white transition-colors">Facebook 📘</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter/X 🐦</a>
+          <a href="#" class="hover:text-white transition-colors">Instagram 📸</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn 💼</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-slate-400 text-center md:text-right">
+          © 2026 <strong class="text-white">Indore Travels</strong>. Powered by Travel CARE B2B Platform.
+        </div>
+
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- ==================== JAVASCRIPT CONTROLLERS ==================== -->
+  <script>
+    // Tab switcher
+    function switchTab(tabId) {
+      const tabs = ['flights', 'hotels', 'cars', 'pnr'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tab-btn-' + t);
+        const content = document.getElementById('tab-content-' + t);
+        if (t === tabId) {
+          btn.className = 'pb-3 px-4 font-semibold text-sm transition-all border-b-2 flex items-center gap-2 border-primary-500 text-primary-400';
+          content.classList.remove('hidden');
+        } else {
+          btn.className = 'pb-3 px-4 font-semibold text-sm transition-all border-b-2 flex items-center gap-2 border-transparent text-slate-400 hover:text-slate-200';
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    // Toggle Trip Type (One Way vs Round Trip)
+    function toggleTripType(type) {
+      const returnCol = document.getElementById('return-date-col');
+      if (type === 'roundTrip') {
+        returnCol.classList.remove('hidden');
+      } else {
+        returnCol.classList.add('hidden');
+      }
+    }
+
+    // Airport Autocomplete simulation
+    function showAirportDropdown(type) {
+      document.getElementById(type + '-dropdown').classList.remove('hidden');
+    }
+    function hideAirportDropdown(type) {
+      setTimeout(() => {
+        document.getElementById(type + '-dropdown').classList.add('hidden');
+      }, 200);
+    }
+    function selectAirport(type, code, name) {
+      document.getElementById(type + '-input').value = code;
+      showToast('Selected ' + name);
+    }
+
+    // Passenger & Class Popover Picker
+    let paxCounts = { adults: 1, children: 0, infants: 0 };
+    function togglePaxDropdown() {
+      const panel = document.getElementById('pax-dropdown-panel');
+      panel.classList.toggle('hidden');
+    }
+
+    function adjustPax(type, delta) {
+      const current = paxCounts[type];
+      const next = current + delta;
+      if (type === 'adults' && next < 1) return;
+      if (next < 0) return;
+      const total = (type === 'adults' ? next : paxCounts.adults) +
+                    (type === 'children' ? next : paxCounts.children) +
+                    (type === 'infants' ? next : paxCounts.infants);
+      if (total > 9) {
+        showToast('Maximum 9 passengers allowed per booking');
+        return;
+      }
+      paxCounts[type] = next;
+      document.getElementById('count-' + type).innerText = next;
+      document.getElementById('total-pax-badge').innerText = 'Total: ' + total + '/9';
+      updatePaxSummary();
+    }
+
+    function updatePaxSummary() {
+      const cabin = document.getElementById('cabin-select').value;
+      const parts = [`${paxCounts.adults} Adult${paxCounts.adults > 1 ? 's' : ''}`];
+      if (paxCounts.children > 0) parts.push(`${paxCounts.children} Child${paxCounts.children > 1 ? 'ren' : ''}`);
+      if (paxCounts.infants > 0) parts.push(`${paxCounts.infants} Infant${paxCounts.infants > 1 ? 's' : ''}`);
+      document.getElementById('pax-summary-text').innerText = '👥 ' + parts.join(', ') + ' • ' + cabin;
+    }
+  </script>
+  <script src="../shared/walkthrough.js"></script>
+</body>
+</html>

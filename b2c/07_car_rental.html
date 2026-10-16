@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Rental & Chauffeur Services — Indore Travels (B2C Walkthrough)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Leaflet CSS for OpenRouteMap -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+  <style>
+    /* Force light page canvas to exactly mirror RentalEnquiryPage.tsx */
+    body.car-rental-page {
+      background-color: #f9fafb !important;
+      color: #1e293b !important;
+    }
+    #route-map {
+      height: 320px;
+      width: 100%;
+      border-radius: 0 0 1rem 1rem;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gray-50 text-slate-800 flex flex-col font-sans car-rental-page">
+
+  <!-- ==================== TOP WALKTHROUGH CONTROLLER ==================== -->
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border-sky-400/40 border">
+        Creative Theme • B2C Customer (7/11)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">Car Rental & Chauffeur Services (OpenRouteMap)</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/b2c/07_car_rental.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/b2c/07_car_rental.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="08_retrieve_pnr.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: Retrieve PNR →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ==================== PUBLIC NAVBAR (Exact Live PublicNavbar.tsx) ==================== -->
+  <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-10 z-40 text-slate-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logo & Branding -->
+        <a href="01_landing_page.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary-600 to-indigo-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-primary-500/25 group-hover:scale-105 transition-transform">
+            ✈️
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white tracking-tight group-hover:text-primary-400 transition-colors">
+              Indore Travels
+            </span>
+            <span class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">
+              TRAVEL & TOURISM PORTAL
+            </span>
+          </div>
+        </a>
+
+        <!-- Main Navigation Links -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="01_landing_page.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Home
+          </a>
+          <a href="02_flight_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Flights ✈
+          </a>
+          <a href="05_hotel_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Hotels 🏨
+          </a>
+          <a href="07_car_rental.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-primary-600/20 text-primary-400 border border-primary-500/30">
+            Cars 🚗
+          </a>
+          <a href="08_retrieve_pnr.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">
+            Retrieve PNR 🎫
+          </a>
+        </nav>
+
+        <!-- Right Action Menu -->
+        <div class="hidden md:flex items-center gap-3">
+          <!-- Language Selector Toggle -->
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-full p-0.5 shadow-xs">
+            <button type="button" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-xs">
+              EN
+            </button>
+            <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full text-xs font-semibold text-slate-300 hover:text-white">
+              FR
+            </button>
+          </div>
+
+          <a href="09_my_bookings.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+            📋 My Bookings
+          </a>
+          <a href="../agency_admin/01_dashboard.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all">
+            ⚡ Dashboard
+          </a>
+          <div class="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <span class="text-xs font-medium text-slate-300">Hi, <span class="font-semibold text-white">Jason</span></span>
+            <a href="10_saved_travelers.html" class="px-2 py-1 rounded text-xs text-slate-400 hover:text-indigo-300">Profile</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT (Exact RentalEnquiryPage.tsx) ==================== -->
+  <main class="min-h-screen bg-[#070b14] pb-16 space-y-6 w-full text-slate-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 space-y-4">
+
+    <!-- Compact Single-Row Executive Header (Exact UnifiedPageHeader.tsx) -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 text-white shadow-md flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+          <svg class="w-4 h-4 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C1.4 11.2 1 12.1 1 13v3c0 .6.4 1 1 1h2"/>
+            <circle cx="7" cy="17" r="2"/>
+            <path d="M9 17h6"/>
+            <circle cx="17" cy="17" r="2"/>
+          </svg>
+        </div>
+        <div class="min-w-0">
+          <h1 class="text-base sm:text-lg font-bold text-white tracking-tight flex items-center gap-2 truncate">
+            <span>Car Rental &amp; Chauffeur Services</span>
+            <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 text-[10px] font-medium">
+              Verified Fleet &amp; Drivers
+            </span>
+          </h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="09_my_bookings.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl transition-all shadow-sm">
+          <span>🚗 My Car Enquiries</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Minimized 4 Single-Line KPI Number Cards (Exact UnifiedKpiGrid.tsx) -->
+    <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+      <div class="bg-slate-900 border border-emerald-500/30 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all">
+        <span class="text-[11px] text-emerald-400 font-semibold tracking-wide truncate flex items-center gap-1.5">
+          <span>🚘</span>
+          <span class="truncate">Fleet Categories</span>
+        </span>
+        <span class="text-sm font-black text-emerald-300 shrink-0 ml-2">Sedan • SUV • Van</span>
+      </div>
+
+      <div class="bg-slate-900 border border-indigo-500/30 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all">
+        <span class="text-[11px] text-indigo-400 font-semibold tracking-wide truncate flex items-center gap-1.5">
+          <span>👤</span>
+          <span class="truncate">Service Quality</span>
+        </span>
+        <span class="text-sm font-black text-indigo-300 shrink-0 ml-2">Dedicated Chauffeur</span>
+      </div>
+
+      <div class="bg-slate-900 border border-amber-500/30 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all">
+        <span class="text-[11px] text-amber-400 font-semibold tracking-wide truncate flex items-center gap-1.5">
+          <span>🏷️</span>
+          <span class="truncate">Pricing Engine</span>
+        </span>
+        <span class="text-sm font-black text-amber-300 shrink-0 ml-2">Per Km Transparent</span>
+      </div>
+
+      <div class="bg-slate-900 border border-purple-500/30 rounded-xl px-3 py-2 flex items-center justify-between shadow-xs transition-all">
+        <span class="text-[11px] text-purple-400 font-semibold tracking-wide truncate flex items-center gap-1.5">
+          <span>⚡</span>
+          <span class="truncate">Support SLA</span>
+        </span>
+        <span class="text-sm font-black text-purple-300 shrink-0 ml-2">&lt; 30m Confirmation</span>
+      </div>
+    </div>
+
+      </div>
+
+  <!-- Main Full-Bleed Container with Chauffeur Hero -->
+  <div class="w-full relative z-20 min-h-[640px] flex flex-col justify-between pt-6 pb-16 overflow-hidden">
+    <div class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+      <img
+        src="../images/hero/hero_car_chauffeur.jpg"
+        alt="Luxury Chauffeur Fleet"
+        class="absolute inset-0 w-full h-full object-cover object-center opacity-100 pointer-events-none"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-slate-950/85 via-slate-950/30 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent pointer-events-none"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col space-y-6">
+      <div class="text-left space-y-2 max-w-2xl pt-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-emerald-400 border border-emerald-500/30 text-xs font-semibold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Executive Fleet & Dedicated Chauffeur Services</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight drop-shadow-md">
+          Verified Fleet & Dedicated Chauffeurs
+        </h2>
+        <p class="text-sm text-slate-200 font-medium drop-shadow-sm">
+          Comfortable intercity transit, corporate sedans, and airport chauffeur transfers at transparent per-km rates with verified drivers.
+        </p>
+      </div>
+    <!-- Main Container -->
+    <div>
+      <form id="car-form" onsubmit="handleCarSubmit(event)" class="bg-slate-950/45 backdrop-blur-xl rounded-3xl shadow-[0_16px_50px_rgba(0,0,0,0.5)] border border-white/25 p-6 sm:p-8 space-y-8 ring-1 ring-white/20 text-white">
+        
+        <!-- Error Banner (Hidden by default) -->
+        <div id="error-banner" class="hidden p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg text-red-700 text-sm flex items-center justify-between">
+          <span id="error-text">Please fill all mandatory fields.</span>
+          <button type="button" onclick="document.getElementById('error-banner').classList.add('hidden')" class="text-red-500 hover:text-red-700 font-bold">✕</button>
+        </div>
+
+        <!-- Section 1: Route & Time -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 flex items-center space-x-2 border-b pb-2">
+            <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">1</span>
+            <span>Trip Route &amp; Timeline</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Pickup Location (From) <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="fromLocation"
+                required
+                placeholder="e.g. Mumbai Airport Terminal 2 / Hotel Taj Mahal"
+                value="Mumbai Airport Terminal 2"
+                oninput="updateRouteDisplay()"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Dropoff Location (To) <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="toLocation"
+                required
+                placeholder="e.g. Pune City Center / Goa Resort"
+                value="Pune City Center"
+                oninput="updateRouteDisplay()"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Pickup Date &amp; Time <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="datetime-local"
+                id="pickupDateTime"
+                required
+                value="2026-10-25T08:30"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Return Date &amp; Time <span class="text-gray-400 font-normal">(Optional for one-way)</span>
+              </label>
+              <input
+                type="datetime-local"
+                id="returnDateTime"
+                value="2026-10-28T18:00"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+          </div>
+
+          <!-- Interactive OpenRouteMap Component (Exact OpenRouteMap.tsx) -->
+          <div class="pt-2">
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden space-y-0">
+              
+              <!-- Header Banner -->
+              <div class="bg-slate-900 text-white p-3 sm:p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs">
+                <div class="flex items-center space-x-2">
+                  <span class="text-base">🗺️</span>
+                  <div>
+                    <h4 class="font-bold text-sm text-white flex items-center space-x-1.5">
+                      <span>OpenStreetMap Live Route</span>
+                      <span class="bg-emerald-600 text-white text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded">
+                        Free &amp; Open Source
+                      </span>
+                    </h4>
+                    <p id="map-route-summary" class="text-slate-400 text-[11px]">
+                      Mumbai Airport Terminal 2 ➔ Pune City Center
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-3 bg-indigo-950/80 px-3 py-1.5 rounded-xl border border-indigo-700/50">
+                  <div>
+                    <span class="text-slate-400 text-[10px] uppercase font-bold block">Distance</span>
+                    <span class="text-emerald-400 font-extrabold text-sm">152 km</span>
+                  </div>
+                  <div class="h-6 w-px bg-indigo-800"></div>
+                  <div>
+                    <span class="text-slate-400 text-[10px] uppercase font-bold block">Est. Driving Time</span>
+                    <span class="text-indigo-200 font-extrabold text-sm">3 hr 15 min</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map Canvas Container (Powered by Leaflet + OpenStreetMap) -->
+              <div class="relative w-full bg-slate-100">
+                <div id="route-map"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 2: Vehicle Type Selection (Exact SEATER_OPTIONS from RentalEnquiryPage.tsx) -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 flex items-center space-x-2 border-b pb-2">
+            <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">2</span>
+            <span>Select Vehicle Category</span>
+          </h2>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Option 1: 4-Seater Sedan -->
+            <div
+              id="seater-sedan"
+              onclick="selectSeater('4-Seater Sedan')"
+              class="seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50"
+            >
+              <div class="flex items-start justify-between">
+                <span class="text-3xl">🚗</span>
+                <span class="seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                  Popular
+                </span>
+              </div>
+              <div class="mt-3">
+                <h3 class="font-bold text-gray-900 text-sm">4-Seater Sedan</h3>
+                <p class="text-xs text-gray-500 mt-1">Honda City, Dzire or equivalent (Ideal for 1-4 passengers)</p>
+              </div>
+            </div>
+
+            <!-- Option 2: 6/7-Seater SUV (Default Selected) -->
+            <div
+              id="seater-suv"
+              onclick="selectSeater('6/7-Seater SUV')"
+              class="seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-indigo-600 bg-indigo-50/50 shadow-md ring-2 ring-indigo-400/20"
+            >
+              <div class="flex items-start justify-between">
+                <span class="text-3xl">🚙</span>
+                <span class="seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-indigo-600 text-white">
+                  Family Choice
+                </span>
+              </div>
+              <div class="mt-3">
+                <h3 class="font-bold text-gray-900 text-sm">6/7-Seater SUV</h3>
+                <p class="text-xs text-gray-500 mt-1">Toyota Innova Crysta, Ertiga or equivalent (Extra luggage space)</p>
+              </div>
+            </div>
+
+            <!-- Option 3: Luxury Sedan -->
+            <div
+              id="seater-luxury"
+              onclick="selectSeater('Luxury Sedan')"
+              class="seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50"
+            >
+              <div class="flex items-start justify-between">
+                <span class="text-3xl">🏎️</span>
+                <span class="seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                  Executive
+                </span>
+              </div>
+              <div class="mt-3">
+                <h3 class="font-bold text-gray-900 text-sm">Luxury Sedan</h3>
+                <p class="text-xs text-gray-500 mt-1">Mercedes-Benz E-Class, BMW 5 Series or equivalent (VIP Executive)</p>
+              </div>
+            </div>
+
+            <!-- Option 4: Tempo Traveller / Minibus -->
+            <div
+              id="seater-tempo"
+              onclick="selectSeater('Tempo Traveller / Minibus')"
+              class="seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50"
+            >
+              <div class="flex items-start justify-between">
+                <span class="text-3xl">🚐</span>
+                <span class="seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600">
+                  Group Travel
+                </span>
+              </div>
+              <div class="mt-3">
+                <h3 class="font-bold text-gray-900 text-sm">Tempo Traveller / Minibus</h3>
+                <p class="text-xs text-gray-500 mt-1">12 - 26 Seater AC Traveller (Group Outings &amp; Corporate Tours)</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Section 3: Contact Information (Exact CountryPhoneInput.tsx) -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 flex items-center space-x-2 border-b pb-2">
+            <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">3</span>
+            <span>Passenger Contact Information</span>
+          </h2>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="contactName"
+                required
+                placeholder="John Doe"
+                value="Jason Woods"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="contactEmail"
+                required
+                placeholder="john@example.com"
+                value="jason.woods@example.com"
+                class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+                Phone Number <span class="text-red-500">*</span>
+              </label>
+              <div>
+                <div class="flex rounded-xl border border-slate-700 overflow-hidden focus-within:ring-2 focus-within:ring-indigo-500 bg-slate-800 shadow-sm">
+                  <select
+                    id="countrySelect"
+                    onchange="updatePhoneSubtext()"
+                    class="px-3 py-2.5 bg-slate-800 border-r border-slate-700 text-xs font-bold text-slate-200 focus:outline-none cursor-pointer min-w-[125px]"
+                  >
+                    <option value="IN" data-dial="+91" data-flag="🇮🇳" data-name="India" selected>🇮🇳 +91 IN</option>
+                    <option value="US" data-dial="+1" data-flag="🇺🇸" data-name="United States">🇺🇸 +1 US</option>
+                    <option value="GB" data-dial="+44" data-flag="🇬🇧" data-name="United Kingdom">🇬🇧 +44 GB</option>
+                    <option value="AE" data-dial="+971" data-flag="🇦🇪" data-name="UAE">🇦🇪 +971 AE</option>
+                    <option value="SA" data-dial="+966" data-flag="🇸🇦" data-name="Saudi Arabia">🇸🇦 +966 SA</option>
+                    <option value="QA" data-dial="+974" data-flag="🇶🇦" data-name="Qatar">🇶🇦 +974 QA</option>
+                    <option value="SG" data-dial="+65" data-flag="🇸🇬" data-name="Singapore">🇸🇬 +65 SG</option>
+                    <option value="AU" data-dial="+61" data-flag="🇦🇺" data-name="Australia">🇦🇺 +61 AU</option>
+                    <option value="CA" data-dial="+1" data-flag="🇨🇦" data-name="Canada">🇨🇦 +1 CA</option>
+                    <option value="FR" data-dial="+33" data-flag="🇫🇷" data-name="France">🇫🇷 +33 FR</option>
+                  </select>
+                  <input
+                    type="tel"
+                    id="contactPhone"
+                    value="9876543210"
+                    oninput="updatePhoneSubtext()"
+                    placeholder="Enter phone number"
+                    class="flex-1 px-3 py-2.5 text-sm font-semibold text-white bg-slate-800 placeholder-slate-500 focus:outline-none"
+                  />
+                </div>
+                <p id="phone-subtext" class="text-[11px] font-medium text-slate-500 mt-1.5">
+                  Selected: 🇮🇳 India +91 • Will send as +919876543210 (E.164 for API)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 4: Special Requirements / Description -->
+        <div class="space-y-4">
+          <h2 class="text-lg font-bold text-gray-900 flex items-center space-x-2 border-b pb-2">
+            <span class="bg-indigo-100 text-indigo-700 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold">4</span>
+            <span>Special Requirements &amp; Custom Notes</span>
+          </h2>
+
+          <div>
+            <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1">
+              Description / Custom Notes for Agent
+            </label>
+            <textarea
+              id="specialNotes"
+              rows="3"
+              placeholder="Mention any custom preferences e.g. Extra luggage carrier required, English speaking driver requested, child safety seat needed, flight number for airport pickup..."
+              class="w-full px-4 py-2.5 rounded-lg border border-gray-300 text-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+            >Arriving on flight AI-642, require luggage carrier on top and child safety seat.</textarea>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="pt-4 border-t flex justify-end">
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-xl shadow-lg hover:shadow-indigo-500/25 transition-all text-sm flex items-center justify-center space-x-2 disabled:opacity-50 cursor-pointer"
+          >
+            <span>Submit Car Rental Request</span>
+            <span>➔</span>
+          </button>
+        </div>
+      </form>
+    </div>
+
+      </div>
+  </div>
+</main>
+
+  <!-- ==================== SUCCESS MODAL (Exact RentalEnquiryPage.tsx lines 350-413) ==================== -->
+  <div id="car-confirm-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-fade-in">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 space-y-6 text-center shadow-2xl relative">
+      <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-3xl mx-auto">
+        ✓
+      </div>
+      
+      <div class="space-y-2">
+        <h2 class="text-2xl font-extrabold text-gray-900">Request Submitted Successfully!</h2>
+        <p class="text-xs text-gray-500">Your Car Rental Request reference code is:</p>
+        <div id="modal-ref" class="inline-block bg-indigo-50 text-indigo-700 font-mono text-base font-bold px-4 py-2 rounded-lg border border-indigo-200">
+          CAR-ENQ-892410
+        </div>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-4 text-xs text-gray-600 text-left space-y-2 border">
+        <div class="flex justify-between border-b pb-1">
+          <span class="font-semibold text-gray-500">Route:</span>
+          <span id="modal-route" class="font-bold text-gray-800">Mumbai Airport Terminal 2 ➔ Pune City Center</span>
+        </div>
+        <div class="flex justify-between border-b pb-1">
+          <span class="font-semibold text-gray-500">Pickup Date:</span>
+          <span id="modal-date" class="font-bold text-gray-800">25/10/2026, 08:30:00</span>
+        </div>
+        <div class="flex justify-between border-b pb-1">
+          <span class="font-semibold text-gray-500">Vehicle Category:</span>
+          <span id="modal-vehicle" class="font-bold text-indigo-600">6/7-Seater SUV</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="font-semibold text-gray-500">Contact Email:</span>
+          <span id="modal-email" class="font-bold text-gray-800">jason.woods@example.com</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 leading-relaxed">
+        Our travel agent will contact you shortly on <strong id="modal-phone" class="text-gray-800">+91 9876543210</strong> or email to finalize offline rates and assign your vehicle &amp; driver.
+      </p>
+
+      <div class="pt-2 flex flex-col sm:flex-row gap-3">
+        <a
+          href="09_my_bookings.html"
+          class="flex-1 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl text-sm transition-all text-center"
+        >
+          Track My Car Enquiries
+        </a>
+        <button
+          type="button"
+          onclick="resetCarForm()"
+          class="px-4 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl text-sm transition-all cursor-pointer"
+        >
+          Submit Another
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC FOOTER (Exact Live PublicFooter.tsx) ==================== -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800/60">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="lg:col-span-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✈️</span>
+            <span class="font-extrabold text-lg text-white tracking-tight">Indore Travels</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your complete travel solution. Book flights, luxury hotels, and rental vehicles with guaranteed best rates globally.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-400">
+            <p class="flex items-center gap-2">
+              <span>📞</span>
+              <a href="tel:+18005550199" class="hover:text-emerald-400 transition-colors font-medium">
+                +1 (800) 555-0199
+              </a>
+            </p>
+            <p class="flex items-center gap-2">
+              <span>✉️</span>
+              <a href="mailto:support@indore.travel.com" class="hover:text-emerald-400 transition-colors">
+                support@indore.travel.com
+              </a>
+            </p>
+            <p class="flex items-center gap-2">
+              <span>📍</span>
+              <span>Global Travel Hub</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Column 2: Company & About -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Press &amp; Media</a></li>
+            <li><a href="../sub_agent/01_dashboard.html" class="hover:text-emerald-400 transition-colors">Partner With Us (B2B)</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Customer Care -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Help &amp; FAQ</a></li>
+            <li><a href="09_my_bookings.html" class="hover:text-emerald-400 transition-colors">Manage My Bookings</a></li>
+            <li><a href="08_retrieve_pnr.html" class="hover:text-emerald-400 transition-colors">Retrieve PNR (E-Tickets &amp; Vouchers)</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cancellation &amp; Refund Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">24/7 Support Hub</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Legal & Policies -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Legal &amp; Compliance</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms &amp; Conditions</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security &amp; Data Protection</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 5: Travel Services -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Travel Services</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="02_flight_results.html" class="hover:text-emerald-400 transition-colors">Flight Booking</a></li>
+            <li><a href="05_hotel_results.html" class="hover:text-emerald-400 transition-colors">Hotel Reservations</a></li>
+            <li><a href="07_car_rental.html" class="hover:text-emerald-400 transition-colors">Car Rental &amp; Chauffeur</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Special Deals &amp; Promo Codes</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Travel Insurance Coverage</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <!-- Payment Badges -->
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500 mr-2">Secure Payments:</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">VISA</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">MC</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-slate-300">AMEX</span>
+          <span class="px-2 py-0.5 rounded bg-slate-900 border border-slate-800 text-[10px] font-bold text-indigo-400">Stripe 🔒</span>
+        </div>
+
+        <!-- Social Links -->
+        <div class="flex items-center gap-4 text-slate-400">
+          <a href="#" class="hover:text-white transition-colors">Facebook 📘</a>
+          <a href="#" class="hover:text-white transition-colors">Twitter/X 🐦</a>
+          <a href="#" class="hover:text-white transition-colors">Instagram 📸</a>
+          <a href="#" class="hover:text-white transition-colors">LinkedIn 💼</a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-slate-400 text-center md:text-right">
+          © 2026 <strong class="text-white">Indore Travels</strong>. Powered by Travel CARE B2B Platform.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS for OpenRouteMap preview -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <script>
+    // State management
+    let currentSeater = '6/7-Seater SUV';
+
+    // 1. Initialize Interactive Leaflet Map for OpenRouteMap
+    let routeMap;
+    let polyline;
+    let pickupMarker;
+    let dropoffMarker;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initMap();
+      updatePhoneSubtext();
+    });
+
+    function initMap() {
+      if (routeMap) return;
+      try {
+        // Center around Mumbai & Pune route
+        routeMap = L.map('route-map', {
+          center: [18.8, 73.3],
+          zoom: 8,
+          zoomControl: true,
+          scrollWheelZoom: false
+        });
+
+        // OpenStreetMap free tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          maxZoom: 19
+        }).addTo(routeMap);
+
+        // Pickup Marker (Mumbai Airport)
+        pickupMarker = L.marker([19.0896, 72.8656]).addTo(routeMap)
+          .bindPopup('<b>Pickup:</b> Mumbai Airport Terminal 2');
+
+        // Dropoff Marker (Pune City Center)
+        dropoffMarker = L.marker([18.5204, 73.8567]).addTo(routeMap)
+          .bindPopup('<b>Dropoff:</b> Pune City Center');
+
+        // Route Polyline along Mumbai-Pune expressway
+        const expresswayPath = [
+          [19.0896, 72.8656],
+          [19.0500, 72.9100],
+          [19.0100, 73.0000],
+          [18.9800, 73.1100],
+          [18.9100, 73.1900],
+          [18.8100, 73.3200],
+          [18.7500, 73.4000],
+          [18.7200, 73.4700],
+          [18.6500, 73.6500],
+          [18.5204, 73.8567]
+        ];
+
+        polyline = L.polyline(expresswayPath, {
+          color: '#4F46E5',
+          weight: 5,
+          opacity: 0.85,
+          lineJoin: 'round'
+        }).addTo(routeMap);
+
+        routeMap.fitBounds(polyline.getBounds(), { padding: [30, 30] });
+      } catch (e) {
+        console.warn('Map initialization error:', e);
+      }
+    }
+
+    // 2. Seater selection handler
+    const SEATER_DATA = {
+      '4-Seater Sedan': { id: 'seater-sedan', tag: 'Popular' },
+      '6/7-Seater SUV': { id: 'seater-suv', tag: 'Family Choice' },
+      'Luxury Sedan': { id: 'seater-luxury', tag: 'Executive' },
+      'Tempo Traveller / Minibus': { id: 'seater-tempo', tag: 'Group Travel' }
+    };
+
+    function selectSeater(category) {
+      currentSeater = category;
+      document.querySelectorAll('.seater-card').forEach(card => {
+        card.className = 'seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-gray-200 hover:border-gray-300 bg-white hover:bg-gray-50';
+        const tag = card.querySelector('.seater-tag');
+        if (tag) {
+          tag.className = 'seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-gray-100 text-gray-600';
+        }
+      });
+
+      const selected = SEATER_DATA[category];
+      if (selected) {
+        const activeCard = document.getElementById(selected.id);
+        if (activeCard) {
+          activeCard.className = 'seater-card cursor-pointer rounded-xl p-4 border-2 transition-all relative flex flex-col justify-between border-indigo-600 bg-indigo-50/50 shadow-md ring-2 ring-indigo-400/20';
+          const tag = activeCard.querySelector('.seater-tag');
+          if (tag) {
+            tag.className = 'seater-tag text-[10px] uppercase font-bold px-2 py-0.5 rounded-full bg-indigo-600 text-white';
+          }
+        }
+      }
+      showToast('Selected vehicle: ' + category);
+    }
+
+    // 3. Dynamic route text preview
+    function updateRouteDisplay() {
+      const from = document.getElementById('fromLocation').value.trim();
+      const to = document.getElementById('toLocation').value.trim();
+      const summaryEl = document.getElementById('map-route-summary');
+      if (from && to) {
+        summaryEl.innerText = `${from} ➔ ${to}`;
+      } else {
+        summaryEl.innerText = 'Enter pickup and dropoff locations to calculate road distance.';
+      }
+    }
+
+    // 4. Country Phone Input subtext handler (matching CountryPhoneInput.tsx)
+    function updatePhoneSubtext() {
+      const select = document.getElementById('countrySelect');
+      const opt = select.options[select.selectedIndex];
+      const dial = opt.getAttribute('data-dial') || '+91';
+      const flag = opt.getAttribute('data-flag') || '🇮🇳';
+      const name = opt.getAttribute('data-name') || 'India';
+      const rawDigits = document.getElementById('contactPhone').value.replace(/\D/g, '');
+      const e164 = rawDigits ? `${dial}${rawDigits}` : '—';
+      document.getElementById('phone-subtext').innerText = `Selected: ${flag} ${name} ${dial} • Will send as ${e164} (E.164 for API)`;
+    }
+
+    // 5. Form submission & modal trigger
+    function handleCarSubmit(e) {
+      e.preventDefault();
+      const fromLoc = document.getElementById('fromLocation').value.trim();
+      const toLoc = document.getElementById('toLocation').value.trim();
+      const pickupDt = document.getElementById('pickupDateTime').value;
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const phoneDigits = document.getElementById('contactPhone').value.trim();
+      const select = document.getElementById('countrySelect');
+      const opt = select.options[select.selectedIndex];
+      const dial = opt.getAttribute('data-dial') || '+91';
+
+      if (!fromLoc || !toLoc || !pickupDt || !name || !email || !phoneDigits) {
+        document.getElementById('error-banner').classList.remove('hidden');
+        document.getElementById('error-text').innerText = 'Please specify all required fields marked with *';
+        return;
+      }
+
+      // Populate modal details
+      const randomRef = 'CAR-ENQ-' + Math.floor(100000 + Math.random() * 900000);
+      document.getElementById('modal-ref').innerText = randomRef;
+      document.getElementById('modal-route').innerText = `${fromLoc} ➔ ${toLoc}`;
+      
+      const parsedDate = new Date(pickupDt);
+      document.getElementById('modal-date').innerText = isNaN(parsedDate.getTime()) ? pickupDt : parsedDate.toLocaleString();
+      document.getElementById('modal-vehicle').innerText = currentSeater;
+      document.getElementById('modal-email').innerText = email;
+      document.getElementById('modal-phone').innerText = `${dial} ${phoneDigits}`;
+
+      // Show modal
+      const modal = document.getElementById('car-confirm-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function resetCarForm() {
+      const modal = document.getElementById('car-confirm-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.getElementById('specialNotes').value = '';
+      showToast('Form ready for new enquiry');
+    }
+  </script>
+  <script src="../shared/walkthrough.js"></script>
+</body>
+</html>

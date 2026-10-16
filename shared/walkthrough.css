@@ -1,0 +1,155 @@
+/* ==========================================================================
+   Design Creative — Walkthrough Design System
+   Exact visual match with current live React application:
+   - Full-Bleed Edge-to-Edge Hero Architecture (MakeMyTrip alignment)
+   - Translucent Frosted Glassmorphism (backdrop-blur-xl, border-white/25)
+   - High-contrast white pill input capsules
+   - Elevated support ticket & modal architecture
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --bg-dark: #020617;
+  --bg-slate: #0b1120;
+  --primary-sky: #0284c7;
+  --primary-indigo: #4f46e5;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-dark);
+  color: #f8fafc;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.dashboard-body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Walkthrough Top Bar — 3-Way Switcher */
+.walkthrough-banner {
+  background: linear-gradient(90deg, #090d16 0%, #0f172a 40%, #032b43 100%);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+  padding: 8px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Frosted Glass Console */
+.glass-console {
+  background: rgba(2, 6, 23, 0.38);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 1.5rem;
+}
+
+/* Crisp White Pill Input Capsule */
+.pill-input {
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f172a;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+.pill-input:hover, .pill-input:focus {
+  background: #ffffff;
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+/* Elevated Modal System */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal-backdrop.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-box {
+  background: #0f172a;
+  border: 1px solid #334155;
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+  max-width: 640px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal-box-light {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.35);
+  max-width: 680px;
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  color: #0f172a;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out;
+}
+
+.modal-backdrop.active .modal-box,
+.modal-backdrop.active .modal-box-light {
+  transform: scale(1);
+}
+
+/* Print Styles */
+@media print {
+  .walkthrough-banner, nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}

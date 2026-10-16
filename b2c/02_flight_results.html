@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flight Search Results — Travel CARE Trip (B2C Walkthrough)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+</head>
+<body class="min-h-screen bg-[#0B1120] text-slate-100 flex flex-col font-sans">
+
+  <!-- ==================== TOP WALKTHROUGH CONTROLLER ==================== -->
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-sky-500/20 text-sky-200 border-sky-400/40 border">
+        Creative Theme • B2C Customer (2/11)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">Flight Search Results & Offers Grid</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/b2c/02_flight_results.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/b2c/02_flight_results.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="03_flight_booking.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-sky-600 hover:bg-sky-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: Flight Booking →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC NAVBAR ==================== -->
+  <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800 sticky top-10 z-40 text-slate-100 shadow-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Logo -->
+        <a href="01_landing_page.html" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+            ✈️
+          </div>
+          <div>
+            <span class="text-lg font-bold text-white tracking-tight group-hover:text-blue-400 transition-colors">
+              Indore Travels
+            </span>
+            <span class="block text-[10px] text-slate-400 font-medium tracking-wider uppercase">
+              TRAVEL & TOURISM PORTAL
+            </span>
+          </div>
+        </a>
+
+        <!-- Main Navigation Items -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="01_landing_page.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Home</a>
+          <a href="02_flight_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold bg-indigo-600/20 text-indigo-400 border border-indigo-500/30">Flights</a>
+          <a href="05_hotel_results.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Hotels</a>
+          <a href="07_car_rental.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Cars</a>
+          <a href="08_retrieve_pnr.html" class="px-4 py-2 rounded-xl text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/60 transition-all">Retrieve PNR</a>
+        </nav>
+
+        <!-- Right Actions: Language Toggle & User Account -->
+        <div class="hidden md:flex items-center gap-3">
+          <div class="flex items-center bg-slate-900 border border-slate-700/80 rounded-full p-0.5 shadow-xs">
+            <button type="button" class="px-2.5 py-1 rounded-full text-xs font-semibold bg-indigo-600 text-white shadow-xs">🇬🇧 EN</button>
+            <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full text-xs font-semibold text-slate-300 hover:text-white">🇫🇷 FR</button>
+          </div>
+          <a href="09_my_bookings.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+            📋 My Bookings
+          </a>
+          <a href="../agency_admin/01_dashboard.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/20 transition-all">
+            ⚡ Dashboard
+          </a>
+          <div class="flex items-center gap-2 pl-2 border-l border-slate-800">
+            <span class="text-xs font-medium text-slate-300">Hi, <span class="font-semibold text-white">Jason</span></span>
+            <a href="10_saved_travelers.html" class="px-2 py-1 rounded text-xs text-slate-400 hover:text-indigo-300">Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+  <main class="max-w-7xl mx-auto px-4 py-4 space-y-4 pb-12 w-full">
+
+    <!-- Compact Single-Row Executive Header -->
+    <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-900/90 border border-slate-800 rounded-2xl p-4 shadow-xl">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-sky-500/10 border border-sky-500/30 flex items-center justify-center text-sky-400 font-bold">
+          ✈️
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-base font-extrabold text-white">Flight Search & GDS Reservation Terminal</h1>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
+              Global Air Inventory
+            </span>
+          </div>
+          <p class="text-xs text-slate-400">Live multi-GDS aggregator feeds with wholesale NDC fares</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button type="button" onclick="openModal('favorite-confirm-modal')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold rounded-xl transition-all shadow-xs cursor-pointer">
+          <span>⭐</span>
+          <span>Save Route to Favorites</span>
+        </button>
+        <a href="08_retrieve_pnr.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-bold rounded-xl transition-all shadow-xs">
+          <span>🎫</span>
+          <span>Retrieve PNR</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Active Search Summary Bar -->
+    <div class="bg-slate-900/80 border border-slate-800 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-6">
+        <div>
+          <span class="block text-[10px] font-bold uppercase text-slate-500">Route</span>
+          <span class="text-sm font-bold text-white flex items-center gap-2">
+            <span>Sydney (SYD)</span>
+            <span class="text-indigo-400">➔</span>
+            <span>Melbourne (MEL)</span>
+          </span>
+        </div>
+        <div class="border-l border-slate-800 pl-6">
+          <span class="block text-[10px] font-bold uppercase text-slate-500">Dates</span>
+          <span class="text-sm font-semibold text-slate-200">25 Oct 2026 (One-Way)</span>
+        </div>
+        <div class="border-l border-slate-800 pl-6">
+          <span class="block text-[10px] font-bold uppercase text-slate-500">Travelers</span>
+          <span class="text-sm font-semibold text-slate-200">1 Adult • Economy</span>
+        </div>
+      </div>
+
+      <a href="01_landing_page.html" class="text-xs px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">
+        Modify Itinerary
+      </a>
+    </div>
+
+    <!-- Results Grid Layout (Sidebar Filters + Flight Offer Cards) -->
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      
+      <!-- Left Filters Column -->
+      <div class="space-y-4">
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <span class="text-xs font-bold uppercase text-slate-400">Filters</span>
+            <button class="text-[11px] text-indigo-400 hover:underline">Reset</button>
+          </div>
+
+          <!-- Stops Filter -->
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-white block">Stops</span>
+            <label class="flex items-center justify-between text-xs text-slate-300 cursor-pointer">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" checked class="rounded bg-slate-800 text-indigo-600"> Non-stop Direct
+              </span>
+              <span class="text-slate-500">AUD $89</span>
+            </label>
+            <label class="flex items-center justify-between text-xs text-slate-300 cursor-pointer">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" class="rounded bg-slate-800 text-indigo-600"> 1 Stop
+              </span>
+              <span class="text-slate-500">AUD $145</span>
+            </label>
+          </div>
+
+          <!-- Airlines Filter -->
+          <div class="space-y-2 border-t border-slate-800 pt-4">
+            <span class="text-xs font-bold text-white block">Airlines</span>
+            <label class="flex items-center justify-between text-xs text-slate-300 cursor-pointer">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" checked class="rounded bg-slate-800 text-indigo-600"> Qantas Airways (QF)
+              </span>
+              <span class="text-slate-500">From $129</span>
+            </label>
+            <label class="flex items-center justify-between text-xs text-slate-300 cursor-pointer">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" checked class="rounded bg-slate-800 text-indigo-600"> Virgin Australia (VA)
+              </span>
+              <span class="text-slate-500">From $109</span>
+            </label>
+            <label class="flex items-center justify-between text-xs text-slate-300 cursor-pointer">
+              <span class="flex items-center gap-2">
+                <input type="checkbox" checked class="rounded bg-slate-800 text-indigo-600"> Jetstar (JQ)
+              </span>
+              <span class="text-slate-500">From $89</span>
+            </label>
+          </div>
+
+          <!-- Price Range Slider Simulator -->
+          <div class="space-y-2 border-t border-slate-800 pt-4">
+            <div class="flex justify-between text-xs text-slate-300">
+              <span class="font-bold text-white">Max Fare</span>
+              <span class="font-mono text-indigo-400 font-bold">AUD $450</span>
+            </div>
+            <input type="range" min="80" max="600" value="450" class="w-full accent-indigo-600">
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Flight Offers Column (3 Realistic Flight Cards) -->
+      <div class="lg:col-span-3 space-y-4">
+        
+        <!-- Flight Offer 1: Jetstar Best Value -->
+        <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 shadow-lg transition-all space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-orange-600/20 text-orange-400 border border-orange-500/30 flex items-center justify-center font-black text-xs">
+                JQ
+              </div>
+              <span class="text-sm font-bold text-white">Jetstar Airways</span>
+              <span class="text-xs text-slate-500 font-mono">JQ 502 • Airbus A320</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/30">
+              Lowest Fare
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <!-- Departure -->
+            <div>
+              <div class="text-lg font-black text-white">06:00</div>
+              <div class="text-xs font-semibold text-slate-300">Sydney (SYD)</div>
+              <div class="text-[11px] text-slate-500">Terminal 2 Domestic</div>
+            </div>
+
+            <!-- Duration & Route Strip -->
+            <div class="text-center space-y-1">
+              <span class="text-[11px] font-medium text-slate-400">1h 35m</span>
+              <div class="w-full h-0.5 bg-slate-700 relative">
+                <span class="absolute left-1/2 -top-1.5 -translate-x-1/2 text-xs">✈️</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">Non-stop</span>
+            </div>
+
+            <!-- Arrival -->
+            <div class="md:text-right">
+              <div class="text-lg font-black text-white">07:35</div>
+              <div class="text-xs font-semibold text-slate-300">Melbourne (MEL)</div>
+              <div class="text-[11px] text-slate-500">Terminal 4</div>
+            </div>
+
+            <!-- Pricing & Action -->
+            <div class="md:text-right md:border-l md:border-slate-800 md:pl-4 space-y-1">
+              <div class="text-xl font-black text-white">AUD $89.00</div>
+              <div class="text-[10px] text-slate-400">incl. all taxes & fees</div>
+              <a href="03_flight_booking.html" class="inline-flex items-center justify-center w-full px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
+                Select Offer →
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/60">
+            <span>🧳 7kg Carry-on Included</span>
+            <button type="button" onclick="openModal('fare-rules-modal')" class="text-indigo-400 hover:underline">View Fare Rules & Penalties</button>
+          </div>
+        </div>
+
+        <!-- Flight Offer 2: Qantas Airways Full Service -->
+        <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 shadow-lg transition-all space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-red-600/20 text-red-400 border border-red-500/30 flex items-center justify-center font-black text-xs">
+                QF
+              </div>
+              <span class="text-sm font-bold text-white">Qantas Airways</span>
+              <span class="text-xs text-slate-500 font-mono">QF 401 • Boeing 737-800</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-300 border border-sky-500/30">
+              Full Service • Baggage Included
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <div>
+              <div class="text-lg font-black text-white">08:00</div>
+              <div class="text-xs font-semibold text-slate-300">Sydney (SYD)</div>
+              <div class="text-[11px] text-slate-500">Terminal 3 Qantas</div>
+            </div>
+
+            <div class="text-center space-y-1">
+              <span class="text-[11px] font-medium text-slate-400">1h 35m</span>
+              <div class="w-full h-0.5 bg-slate-700 relative">
+                <span class="absolute left-1/2 -top-1.5 -translate-x-1/2 text-xs">✈️</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">Non-stop</span>
+            </div>
+
+            <div class="md:text-right">
+              <div class="text-lg font-black text-white">09:35</div>
+              <div class="text-xs font-semibold text-slate-300">Melbourne (MEL)</div>
+              <div class="text-[11px] text-slate-500">Terminal 1 Qantas</div>
+            </div>
+
+            <div class="md:text-right md:border-l md:border-slate-800 md:pl-4 space-y-1">
+              <div class="text-xl font-black text-white">AUD $149.00</div>
+              <div class="text-[10px] text-slate-400">incl. 23kg Checked Bag</div>
+              <a href="03_flight_booking.html" class="inline-flex items-center justify-center w-full px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
+                Select Offer →
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/60">
+            <span>🧳 7kg Cabin + 23kg Checked Bag + Inflight Wi-Fi</span>
+            <button type="button" onclick="openModal('fare-rules-modal')" class="text-indigo-400 hover:underline">View Fare Rules & Penalties</button>
+          </div>
+        </div>
+
+        <!-- Flight Offer 3: Virgin Australia -->
+        <div class="bg-slate-900 border border-slate-800 hover:border-slate-700 rounded-2xl p-5 shadow-lg transition-all space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800/80 pb-3">
+            <div class="flex items-center gap-2">
+              <div class="w-7 h-7 rounded-lg bg-purple-600/20 text-purple-400 border border-purple-500/30 flex items-center justify-center font-black text-xs">
+                VA
+              </div>
+              <span class="text-sm font-bold text-white">Virgin Australia</span>
+              <span class="text-xs text-slate-500 font-mono">VA 808 • Boeing 737-800</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-300 border border-indigo-500/30">
+              Popular Choice
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+            <div>
+              <div class="text-lg font-black text-white">10:30</div>
+              <div class="text-xs font-semibold text-slate-300">Sydney (SYD)</div>
+              <div class="text-[11px] text-slate-500">Terminal 2 Domestic</div>
+            </div>
+
+            <div class="text-center space-y-1">
+              <span class="text-[11px] font-medium text-slate-400">1h 35m</span>
+              <div class="w-full h-0.5 bg-slate-700 relative">
+                <span class="absolute left-1/2 -top-1.5 -translate-x-1/2 text-xs">✈️</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-400 uppercase">Non-stop</span>
+            </div>
+
+            <div class="md:text-right">
+              <div class="text-lg font-black text-white">12:05</div>
+              <div class="text-xs font-semibold text-slate-300">Melbourne (MEL)</div>
+              <div class="text-[11px] text-slate-500">Terminal 3 Virgin</div>
+            </div>
+
+            <div class="md:text-right md:border-l md:border-slate-800 md:pl-4 space-y-1">
+              <div class="text-xl font-black text-white">AUD $119.00</div>
+              <div class="text-[10px] text-slate-400">Choice Fare Economy</div>
+              <a href="03_flight_booking.html" class="inline-flex items-center justify-center w-full px-4 py-2 rounded-xl text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white shadow-md shadow-indigo-600/30 transition-all cursor-pointer">
+                Select Offer →
+              </a>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800/60">
+            <span>🧳 7kg Carry-on Included</span>
+            <button type="button" onclick="openModal('fare-rules-modal')" class="text-indigo-400 hover:underline">View Fare Rules & Penalties</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== POPUP MODAL 1: FARE RULES & PENALTIES ==================== -->
+  <div id="fare-rules-modal" class="modal-backdrop">
+    <div class="modal-box p-6 space-y-5">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-base font-bold text-white flex items-center gap-2">
+          <span>📜</span>
+          <span>Airline Fare Rules & Cancellation Policy</span>
+        </h3>
+        <button type="button" onclick="closeModal('fare-rules-modal')" class="text-slate-400 hover:text-white text-lg font-bold">✕</button>
+      </div>
+
+      <div class="space-y-4 text-xs text-slate-300">
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+          <span class="font-bold text-white block mb-1">Cancellation & Refund Penalty</span>
+          <p>Cancellation allowed up to 3 hours before departure. Platform service fee (15%) + airline fee applies. Net refund credited to original payment source.</p>
+        </div>
+
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+          <span class="font-bold text-white block mb-1">Date & Route Changes</span>
+          <p>Permitted subject to fare difference and AUD $50 reissue penalty fee per ticket.</p>
+        </div>
+
+        <div class="bg-slate-950/70 border border-slate-800 rounded-xl p-3">
+          <span class="font-bold text-white block mb-1">Baggage Allowance Policy</span>
+          <p>Standard cabin bag limit is 7 kg. Additional checked bags (23 kg) can be purchased during checkout or online check-in.</p>
+        </div>
+      </div>
+
+      <div class="flex justify-end pt-2">
+        <button type="button" onclick="closeModal('fare-rules-modal')" class="px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-white">
+          Close Rules
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== POPUP MODAL 2: FAVORITE SEARCH CONFIRMATION ==================== -->
+  <div id="favorite-confirm-modal" class="modal-backdrop">
+    <div class="modal-box p-6 space-y-4 max-w-md">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="text-sm font-bold text-white flex items-center gap-2">
+          <span>⭐</span>
+          <span>Save Itinerary to Favorites</span>
+        </h3>
+        <button type="button" onclick="closeModal('favorite-confirm-modal')" class="text-slate-400 hover:text-white text-lg">✕</button>
+      </div>
+
+      <p class="text-xs text-slate-300">
+        Bookmark <strong class="text-white">SYD ➔ MEL (25 Oct 2026)</strong> for 1-click relaunching directly from your Favorite Searches vault.
+      </p>
+
+      <div>
+        <label class="block text-xs font-semibold text-slate-400 mb-1">Custom Label (Optional)</label>
+        <input type="text" value="Sydney to Melbourne Business Trip" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white">
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" onclick="closeModal('favorite-confirm-modal')" class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-800 text-slate-300">Cancel</button>
+        <button type="button" onclick="closeModal('favorite-confirm-modal'); showToast('Route saved to your Favorite Searches!');" class="px-4 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950">Save Favorite</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PUBLIC FOOTER ==================== -->
+  <footer class="bg-slate-950 text-slate-300 border-t border-slate-800/80 pt-12 pb-8 px-4 lg:px-8 mt-auto">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-10 border-b border-slate-800/60">
+        <div class="lg:col-span-1 space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="text-2xl">✈️</span>
+            <span class="font-extrabold text-lg text-white tracking-tight">Indore Travels</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Your trusted travel partner. Seamless flight bookings, verified hotels, and flexible car rentals with instant confirmation.
+          </p>
+          <div class="space-y-1.5 text-xs text-slate-400">
+            <p class="flex items-center gap-2"><span>📞</span> <a href="tel:+18005550199" class="hover:text-blue-400 transition-colors font-medium">+1 (800) 555-0199</a></p>
+            <p class="flex items-center gap-2"><span>✉️</span> <a href="mailto:support@indoretravels.com" class="hover:text-blue-400 transition-colors">support@indoretravels.com</a></p>
+            <p class="flex items-center gap-2"><span>📍</span> <span>Global Partner Hub</span></p>
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Company</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">How It Works</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Careers</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Press & Media</a></li>
+            <li><a href="../agency_admin/01_dashboard.html" class="hover:text-emerald-400 transition-colors font-semibold text-indigo-400">Partner With Us (B2B)</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Contact Us</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Help & FAQ</a></li>
+            <li><a href="09_my_bookings.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Manage My Bookings</a></li>
+            <li><a href="08_retrieve_pnr.html" class="hover:text-emerald-400 transition-colors font-medium text-slate-300">Retrieve PNR (E-Tickets & Vouchers)</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cancellation & Refund Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">24/7 Support Hub</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Legal & Compliance</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Terms & Conditions</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Cookie Policy</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Disclaimer</a></li>
+            <li><a href="#" class="hover:text-emerald-400 transition-colors">Security & Data Protection</a></li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-bold text-sm text-white uppercase tracking-wider">Travel Services</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="02_flight_results.html" class="hover:text-emerald-400 transition-colors">Flight Booking</a></li>
+            <li><a href="05_hotel_results.html" class="hover:text-emerald-400 transition-colors">Hotel Reservations</a></li>
+            <li><a href="07_car_rental.html" class="hover:text-emerald-400 transition-colors">Chauffeur & Fleet Rental</a></li>
+            <li><a href="11_favorite_searches.html" class="hover:text-emerald-400 transition-colors">Saved Searches Vault</a></li>
+            <li><a href="04_flight_ticket.html" class="hover:text-emerald-400 transition-colors">Sample E-Ticket PDF</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 Travel CARE Trip Platform. All Rights Reserved.</p>
+        <div class="flex items-center gap-4 text-slate-400 text-xs">
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span> PCI-DSS Certified</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-500"></span> SSL 256-Bit Encrypted</span>
+          <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-sky-500"></span> IATA Accredited Partner</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../shared/walkthrough.js"></script>
+</body>
+</html>

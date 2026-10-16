@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Markup Engine — Travel CARE Trip (Agency Admin)</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: {
+              50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 900: '#312e81'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../shared/walkthrough.css">
+</head>
+<body class="dashboard-body min-h-screen bg-slate-50 flex flex-col font-sans">
+
+  <!-- ==================== TOP WALKTHROUGH CONTROLLER ==================== -->
+    <!-- ==================== TOP SYSTEM WALKTHROUGH CONTROLLER (3-WAY THEME COMPARISON) ==================== -->
+  <div class="walkthrough-banner">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-sky-400 animate-pulse"></span>
+      <span class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-200 border-indigo-400/40 border">
+        Creative Theme • Agency Admin (4/7)
+      </span>
+      <span class="text-xs text-slate-200 font-semibold hidden md:inline">Dynamic Profit Markup & Commission Engine</span>
+    </div>
+
+    <!-- Theme Switcher & Step Navigation -->
+    <div class="flex items-center gap-2">
+      <a href="../index.html" class="text-xs px-2.5 py-1 rounded-lg bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/30 transition-colors">
+        📋 Master Hub
+      </a>
+      <a href="../../app_design/agency_admin/04_markup_rules.html" class="text-[11px] px-2 py-1 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 transition-colors hidden sm:inline" title="Compare with Baseline Theme">
+        ← Baseline Theme
+      </a>
+      <a href="../../app_design_one/agency_admin/04_markup_rules.html" class="text-[11px] px-2 py-1 rounded-lg bg-emerald-950/80 hover:bg-emerald-900 text-amber-300 border border-amber-500/30 transition-colors hidden sm:inline" title="Compare with Luxury Concierge Theme">
+        ← Theme One (Luxury)
+      </a>
+      <a href="05_landing_cms.html" class="text-xs font-bold px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white transition-all shadow-sm flex items-center gap-1">
+        Next: Storefront CMS →
+      </a>
+      <div class="border-l border-slate-700 pl-2 flex items-center gap-1">
+        <a href="../agency_admin/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to Agency Admin Portal">Admin</a>
+        <a href="../sub_agent/01_dashboard.html" class="text-[11px] px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white" title="Switch to B2B Sub-Agent Portal">Agent</a>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- ==================== DASHBOARD LAYOUT (Agency Admin Role) ==================== -->
+  <div class="min-h-screen bg-slate-50 flex flex-1">
+
+    <!-- LEFT SIDEBAR: agencyAdminNav (16 Items exact match with DashboardLayout.tsx) -->
+    <aside class="w-64 bg-slate-900 border-r border-slate-800 text-slate-200 flex flex-col shrink-0 min-h-full shadow-xl">
+      <!-- Header -->
+      <div class="px-4 py-4 border-b border-slate-800/80 flex items-center justify-between gap-2">
+        <a href="01_dashboard.html" class="flex items-center gap-2 min-w-0">
+          <div class="w-8 h-8 shrink-0 rounded-lg bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+            T
+          </div>
+          <div class="min-w-0">
+            <span class="text-sm font-bold text-white tracking-tight whitespace-nowrap block leading-tight">Travel CARE Trip</span>
+            <span class="text-[10px] text-slate-400 font-medium uppercase tracking-wider truncate block">Agency Admin</span>
+          </div>
+        </a>
+        <span class="shrink-0 px-2 py-0.5 text-[10px] font-semibold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-md">
+          PROD
+        </span>
+      </div>
+
+      <!-- Navigation Links: 16 Items -->
+      <nav class="p-3 space-y-1 flex-1 overflow-y-auto">
+        <a href="01_dashboard.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+          Dashboard
+        </a>
+        <a href="../b2c/02_flight_results.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+          Flights
+        </a>
+        <a href="../b2c/05_hotel_results.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          Hotels
+        </a>
+        <a href="../b2c/07_car_rental.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 17a2 2 0 100 4 2 2 0 000-4zm10 0a2 2 0 100 4 2 2 0 000-4zM3 9l2-4h10l2 4M3 9h18v7a1 1 0 01-1 1H4a1 1 0 01-1-1V9z" />
+          </svg>
+          Cars
+        </a>
+        <a href="03_all_bookings.html?type=car" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          Car Requests
+        </a>
+        <a href="03_all_bookings.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+          </svg>
+          My Bookings
+        </a>
+        <a href="../b2c/11_favorite_searches.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+          </svg>
+          Favorite Searches
+        </a>
+        <a href="06_support_tickets.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z" />
+          </svg>
+          Support Operations
+        </a>
+        <a href="../b2c/08_retrieve_pnr.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          PNR Management
+        </a>
+        <a href="#" onclick="showToast('Customer directory view.')" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          Customer Management
+        </a>
+        <a href="02_sub_agents.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          Sub-Agent Management
+        </a>
+        <a href="04_markup_rules.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-semibold bg-indigo-600 text-white shadow-md shadow-indigo-600/30">
+          <svg class="w-4 h-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
+          </svg>
+          Markup Rules
+        </a>
+        <a href="07_wallet.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Commission
+        </a>
+        <a href="01_dashboard.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Reports
+        </a>
+        <a href="#" onclick="showToast('Agency settings.')" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
+          </svg>
+          Settings
+        </a>
+        <a href="05_landing_cms.html" class="flex items-center gap-3 px-3.5 py-2 rounded-lg text-xs font-medium text-slate-300 hover:bg-slate-800/80 hover:text-white transition-all">
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Landing Cards & French CMS
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="p-4 border-t border-slate-800/80 bg-slate-950/40">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-sm text-indigo-400">
+            A
+          </div>
+          <div class="min-w-0 flex-1">
+            <div class="text-xs font-bold text-white truncate">Admin User</div>
+            <div class="text-[10px] text-slate-400 truncate">admin@travelcare.com</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT -->
+    <div class="flex-1 flex flex-col min-h-screen">
+      
+      <!-- Top Header Bar -->
+      <header class="bg-white/95 backdrop-blur-md shadow-xs border-b border-slate-200/80 sticky top-10 z-30">
+        <div class="flex justify-between items-center h-16 px-4 lg:px-6">
+          <div class="flex items-center gap-4">
+            <div class="hidden sm:flex items-center gap-2 bg-slate-100/80 border border-slate-200 rounded-lg px-3 py-1.5 w-64 md:w-80">
+              <svg class="w-4 h-4 text-slate-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input type="text" placeholder="Search rules, routes, airlines..." class="w-full bg-transparent text-xs text-slate-700 placeholder-slate-400 focus:outline-none" oninput="filterRules(this.value)">
+            </div>
+          </div>
+
+          <!-- Agency Badge & Actions -->
+          <div class="flex items-center gap-3">
+            <div class="hidden md:flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-200/80 rounded-full text-xs text-indigo-900 shadow-2xs">
+              <span>🏢 Agency: <strong class="font-semibold">Travel CARE Trip HQ</strong></span>
+            </div>
+
+            <div class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-0.5 text-xs">
+              <button type="button" class="px-2.5 py-1 rounded-full font-bold bg-indigo-600 text-white shadow-xs">🇬🇧 EN</button>
+              <button type="button" onclick="showToast('French language toggled (Bilingual Mode Active)')" class="px-2.5 py-1 rounded-full font-medium text-slate-600 hover:text-slate-900">🇫🇷 FR</button>
+            </div>
+
+            <a href="../b2c/01_landing_page.html" class="px-2.5 py-1 text-xs font-semibold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 rounded-md transition-colors flex items-center gap-1">
+              🏠 Home
+            </a>
+
+            <span class="px-2.5 py-1 text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-700 rounded-md">
+              Agency Admin
+            </span>
+
+            <div class="flex items-center gap-2 pl-2 border-l border-slate-200">
+              <span class="text-xs font-medium text-slate-700">Admin User</span>
+              <a href="../b2c/01_landing_page.html" class="px-2.5 py-1 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 border border-red-200 rounded-md transition-colors">
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Content: B2BMarkupRules.tsx exact match -->
+      <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full space-y-4">
+
+        <!-- Compact Single-Row Executive Header -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl px-4 py-3 text-white shadow-md flex flex-col md:flex-row md:items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+              📈
+            </div>
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <h1 class="text-base font-bold text-white tracking-tight truncate leading-tight">Agency Markup Engine</h1>
+                <span class="px-2 py-0.5 text-[10px] font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-md shrink-0">
+                  Pricing & Overrides
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">Automated pricing policies, percentage or flat markups, airline conditions, and tiered thresholds.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 shrink-0">
+            <button onclick="showToast('Refreshing markup rules...')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium rounded-xl border border-slate-700 transition-all cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+              <span>Refresh</span>
+            </button>
+            <button onclick="openModal('modal-add-rule')" class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all shadow-sm cursor-pointer">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" /></svg>
+              <span>Add Markup Rule</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Minimized 4 KPI Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-slate-500">Total Rules</p>
+              <h3 id="stat-total" class="text-xl font-black text-slate-900 mt-0.5">12</h3>
+            </div>
+            <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-sm">📈</div>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-sky-600">Flight Rules</p>
+              <h3 class="text-xl font-black text-sky-700 mt-0.5">7</h3>
+            </div>
+            <div class="w-8 h-8 rounded-xl bg-sky-50 text-sky-600 flex items-center justify-center text-sm">✈️</div>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-amber-600">Hotel Rules</p>
+              <h3 class="text-xl font-black text-amber-700 mt-0.5">5</h3>
+            </div>
+            <div class="w-8 h-8 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-sm">🏨</div>
+          </div>
+
+          <div class="bg-white border border-slate-200/80 rounded-2xl p-3.5 shadow-xs flex items-center justify-between">
+            <div>
+              <p class="text-[10px] font-bold uppercase tracking-wider text-emerald-600">Active Rules</p>
+              <h3 class="text-xl font-black text-emerald-700 mt-0.5">10</h3>
+            </div>
+            <div class="w-8 h-8 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm">🟢</div>
+          </div>
+        </div>
+
+        <!-- Markup Rules DataTable -->
+        <div class="bg-white rounded-2xl border border-slate-200/80 shadow-xs overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-100/70 border-b border-slate-200 text-slate-700 font-semibold uppercase text-[10px] tracking-wider">
+                  <th class="py-3 px-4">Rule Name</th>
+                  <th class="py-3 px-3">Type</th>
+                  <th class="py-3 px-3 text-right">Value</th>
+                  <th class="py-3 px-3">Value Type</th>
+                  <th class="py-3 px-3 text-center">Priority</th>
+                  <th class="py-3 px-3">Applies To</th>
+                  <th class="py-3 px-3">Rounding</th>
+                  <th class="py-3 px-4">Validity</th>
+                  <th class="py-3 px-3 text-center">Status</th>
+                  <th class="py-3 px-4 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="rules-table-body" class="divide-y divide-slate-100 text-slate-800">
+
+                <!-- Rule 1 -->
+                <tr class="hover:bg-slate-50/80 transition-colors" data-search="Global Flight Standard Markup Percentage">
+                  <td class="py-3 px-4 font-semibold text-slate-900">
+                    <div>Global Flight Standard Markup</div>
+                    <span class="text-[10px] text-slate-400 font-normal">Base 5% markup on international air itineraries</span>
+                  </td>
+                  <td class="py-3 px-3">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Flight</span>
+                  </td>
+                  <td class="py-3 px-3 text-right font-mono font-bold text-slate-900">5.0%</td>
+                  <td class="py-3 px-3 text-slate-600">Percentage</td>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-700">50</td>
+                  <td class="py-3 px-3 text-slate-600 font-medium">All Channels</td>
+                  <td class="py-3 px-3 text-slate-500 font-mono">NearestDollar</td>
+                  <td class="py-3 px-4 text-slate-500">2026-01-01 to 2026-12-31</td>
+                  <td class="py-3 px-3 text-center">
+                    <span id="rstatus-1" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">active</span>
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="viewRule('Global Flight Standard Markup', 'Flight', '5.0%', 'Percentage', 50, 'All Channels', 'NearestDollar', 'active')" class="p-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors cursor-pointer" title="View Details">
+                        👁️
+                      </button>
+                      <button onclick="editRule('Global Flight Standard Markup', 'Flight', 5.0, 'Percentage', 50, 'All Channels', 'NearestDollar')" class="p-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors cursor-pointer" title="Edit Rule">
+                        ✏️
+                      </button>
+                      <button onclick="toggleRuleStatus(1)" class="px-2.5 py-1 text-xs font-semibold rounded-lg border text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300 transition-colors cursor-pointer">
+                        Deactivate
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Rule 2 -->
+                <tr class="hover:bg-slate-50/80 transition-colors" data-search="Qantas Trans-Pacific Premium Flat">
+                  <td class="py-3 px-4 font-semibold text-slate-900">
+                    <div>Qantas Trans-Pacific Corridor</div>
+                    <span class="text-[10px] text-slate-400 font-normal">Flat $35.00 override on SYD-LAX routes (Airline == QF)</span>
+                  </td>
+                  <td class="py-3 px-3">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Flight</span>
+                  </td>
+                  <td class="py-3 px-3 text-right font-mono font-bold text-slate-900">$35.00</td>
+                  <td class="py-3 px-3 text-slate-600">Flat</td>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-700">80</td>
+                  <td class="py-3 px-3 text-slate-600 font-medium">B2C Public</td>
+                  <td class="py-3 px-3 text-slate-500 font-mono">None</td>
+                  <td class="py-3 px-4 text-slate-500">2026-03-01 to 2026-10-31</td>
+                  <td class="py-3 px-3 text-center">
+                    <span id="rstatus-2" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">active</span>
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="viewRule('Qantas Trans-Pacific Corridor', 'Flight', '$35.00', 'Flat', 80, 'B2C Public', 'None', 'active')" class="p-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors cursor-pointer">
+                        👁️
+                      </button>
+                      <button onclick="editRule('Qantas Trans-Pacific Corridor', 'Flight', 35.0, 'Flat', 80, 'B2C Public', 'None')" class="p-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors cursor-pointer">
+                        ✏️
+                      </button>
+                      <button onclick="toggleRuleStatus(2)" class="px-2.5 py-1 text-xs font-semibold rounded-lg border text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300 transition-colors cursor-pointer">
+                        Deactivate
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Rule 3 -->
+                <tr class="hover:bg-slate-50/80 transition-colors" data-search="Luxury Hotels Collection Wholesale Percentage">
+                  <td class="py-3 px-4 font-semibold text-slate-900">
+                    <div>Luxury Hotels Collection</div>
+                    <span class="text-[10px] text-slate-400 font-normal">8% margin on 5-star properties across Dubai and Europe</span>
+                  </td>
+                  <td class="py-3 px-3">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">Hotel</span>
+                  </td>
+                  <td class="py-3 px-3 text-right font-mono font-bold text-slate-900">8.0%</td>
+                  <td class="py-3 px-3 text-slate-600">Percentage</td>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-700">60</td>
+                  <td class="py-3 px-3 text-slate-600 font-medium">B2B Wholesale</td>
+                  <td class="py-3 px-3 text-slate-500 font-mono">Up</td>
+                  <td class="py-3 px-4 text-slate-500">2026-01-01 to 2026-12-31</td>
+                  <td class="py-3 px-3 text-center">
+                    <span id="rstatus-3" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">active</span>
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="viewRule('Luxury Hotels Collection', 'Hotel', '8.0%', 'Percentage', 60, 'B2B Wholesale', 'Up', 'active')" class="p-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors cursor-pointer">
+                        👁️
+                      </button>
+                      <button onclick="editRule('Luxury Hotels Collection', 'Hotel', 8.0, 'Percentage', 60, 'B2B Wholesale', 'Up')" class="p-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors cursor-pointer">
+                        ✏️
+                      </button>
+                      <button onclick="toggleRuleStatus(3)" class="px-2.5 py-1 text-xs font-semibold rounded-lg border text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300 transition-colors cursor-pointer">
+                        Deactivate
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Rule 4 -->
+                <tr class="hover:bg-slate-50/80 transition-colors" data-search="Sub-Agent Wholesale Flight Baseline Tiered">
+                  <td class="py-3 px-4 font-semibold text-slate-900">
+                    <div>Sub-Agent Wholesale Baseline</div>
+                    <span class="text-[10px] text-slate-400 font-normal">Preferential 2.5% wholesale markup for accredited sub-agents</span>
+                  </td>
+                  <td class="py-3 px-3">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200">Flight</span>
+                  </td>
+                  <td class="py-3 px-3 text-right font-mono font-bold text-slate-900">2.5%</td>
+                  <td class="py-3 px-3 text-slate-600">Percentage</td>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-700">40</td>
+                  <td class="py-3 px-3 text-slate-600 font-medium">B2B Wholesale</td>
+                  <td class="py-3 px-3 text-slate-500 font-mono">NearestDollar</td>
+                  <td class="py-3 px-4 text-slate-500">2026-01-01 to 2026-12-31</td>
+                  <td class="py-3 px-3 text-center">
+                    <span id="rstatus-4" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200">active</span>
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="viewRule('Sub-Agent Wholesale Baseline', 'Flight', '2.5%', 'Percentage', 40, 'B2B Wholesale', 'NearestDollar', 'active')" class="p-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors cursor-pointer">
+                        👁️
+                      </button>
+                      <button onclick="editRule('Sub-Agent Wholesale Baseline', 'Flight', 2.5, 'Percentage', 40, 'B2B Wholesale', 'NearestDollar')" class="p-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors cursor-pointer">
+                        ✏️
+                      </button>
+                      <button onclick="toggleRuleStatus(4)" class="px-2.5 py-1 text-xs font-semibold rounded-lg border text-amber-800 bg-amber-50 hover:bg-amber-100 border-amber-300 transition-colors cursor-pointer">
+                        Deactivate
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Rule 5 (Inactive) -->
+                <tr class="hover:bg-slate-50/80 transition-colors bg-slate-50/60" data-search="Seasonal Winter Escape Promotional Discount">
+                  <td class="py-3 px-4 font-semibold text-slate-900">
+                    <div>Seasonal Winter Escape Promotion</div>
+                    <span class="text-[10px] text-slate-400 font-normal">Discounted 1.5% markup during seasonal low period</span>
+                  </td>
+                  <td class="py-3 px-3">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200">Hotel</span>
+                  </td>
+                  <td class="py-3 px-3 text-right font-mono font-bold text-slate-900">1.5%</td>
+                  <td class="py-3 px-3 text-slate-600">Percentage</td>
+                  <td class="py-3 px-3 text-center font-bold text-indigo-700">30</td>
+                  <td class="py-3 px-3 text-slate-600 font-medium">B2C Public</td>
+                  <td class="py-3 px-3 text-slate-500 font-mono">Down</td>
+                  <td class="py-3 px-4 text-slate-500">2026-06-01 to 2026-08-31</td>
+                  <td class="py-3 px-3 text-center">
+                    <span id="rstatus-5" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200">inactive</span>
+                  </td>
+                  <td class="py-3 px-4 text-right">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <button onclick="viewRule('Seasonal Winter Escape Promotion', 'Hotel', '1.5%', 'Percentage', 30, 'B2C Public', 'Down', 'inactive')" class="p-1.5 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg border border-slate-300 transition-colors cursor-pointer">
+                        👁️
+                      </button>
+                      <button onclick="editRule('Seasonal Winter Escape Promotion', 'Hotel', 1.5, 'Percentage', 30, 'B2C Public', 'Down')" class="p-1.5 text-xs font-semibold text-blue-700 bg-blue-50 hover:bg-blue-100 rounded-lg border border-blue-200 transition-colors cursor-pointer">
+                        ✏️
+                      </button>
+                      <button onclick="toggleRuleStatus(5)" class="px-2.5 py-1 text-xs font-semibold rounded-lg border text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border-emerald-300 transition-colors cursor-pointer">
+                        Activate
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Exact Live PublicFooter -->
+      <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-8 mb-8">
+            <div class="col-span-2">
+              <div class="flex items-center gap-2 mb-3">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-indigo-600 to-sky-500 flex items-center justify-center text-white font-bold text-lg shadow-md">
+                  ✈
+                </div>
+                <span class="text-white font-bold text-base tracking-tight">Travel CARE Trip</span>
+              </div>
+              <p class="text-xs text-slate-400 leading-relaxed max-w-sm mb-4">
+                Enterprise wholesale B2B travel operations platform. Real-time GDS connectivity, dynamic margin controls, and automated multi-tier partner management.
+              </p>
+              <div class="flex items-center gap-2 text-xs text-slate-500">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>Wholesale API Connected (Port :5126)</span>
+              </div>
+            </div>
+
+            <div>
+              <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-3">Reservations</h4>
+              <ul class="space-y-2 text-xs">
+                <li><a href="../b2c/02_flight_results.html" class="hover:text-white transition-colors">Flights Search</a></li>
+                <li><a href="../b2c/05_hotel_results.html" class="hover:text-white transition-colors">Hotels Directory</a></li>
+                <li><a href="../b2c/07_car_rental.html" class="hover:text-white transition-colors">Car Hire & Fleet</a></li>
+                <li><a href="../b2c/08_retrieve_pnr.html" class="hover:text-white transition-colors">Retrieve PNR</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-3">Operations</h4>
+              <ul class="space-y-2 text-xs">
+                <li><a href="01_dashboard.html" class="hover:text-white transition-colors">Agency Control Center</a></li>
+                <li><a href="02_sub_agents.html" class="hover:text-white transition-colors">Sub-Agent Network</a></li>
+                <li><a href="03_all_bookings.html" class="hover:text-white transition-colors">Master Bookings</a></li>
+                <li><a href="04_markup_rules.html" class="text-white font-semibold">Markup Engine</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 class="text-white font-semibold text-xs tracking-wider uppercase mb-3">Support & Legal</h4>
+              <ul class="space-y-2 text-xs">
+                <li><a href="06_support_tickets.html" class="hover:text-white transition-colors">Agency Support Desk</a></li>
+                <li><a href="07_wallet.html" class="hover:text-white transition-colors">Commission Ledger</a></li>
+                <li><a href="../b2c/01_landing_page.html" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                <li><a href="../b2c/01_landing_page.html" class="hover:text-white transition-colors">Terms of Service</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-3">
+            <p>© 2026 Travel CARE Trip. All rights reserved. Built with .NET 8 & React.</p>
+            <div class="flex items-center gap-4">
+              <span>Currency: <strong>AUD / USD</strong></span>
+              <span>•</span>
+              <span>B2B Portal Version <strong>2.8.4</strong></span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+
+  <!-- ==================== MODALS ==================== -->
+
+  <!-- Modal: Add / Edit Markup Rule -->
+  <div id="modal-add-rule" class="modal-backdrop">
+    <div class="modal-box max-w-2xl bg-white rounded-2xl shadow-2xl p-6 text-slate-900 border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
+        <h3 id="modal-rule-title" class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>⚙️</span> Configure Markup Rule
+        </h3>
+        <button onclick="closeModal('modal-add-rule')" class="text-slate-400 hover:text-slate-600 text-lg leading-none cursor-pointer">✕</button>
+      </div>
+
+      <form onsubmit="handleSaveRule(event)" class="space-y-4 text-xs">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Rule Name *</label>
+          <input type="text" id="rule-name" required class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs" placeholder="e.g. Qantas Trans-Pacific Corridor">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Description</label>
+          <input type="text" id="rule-desc" class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs" placeholder="Operational rationale...">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Service Type *</label>
+            <select id="rule-type" class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+              <option value="Flight">Flight</option>
+              <option value="Hotel">Hotel</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Value Type *</label>
+            <select id="rule-val-type" class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+              <option value="Percentage">Percentage (%)</option>
+              <option value="Flat">Flat Fee ($)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Markup Value *</label>
+            <input type="number" id="rule-val" step="0.1" required class="w-full px-3 py-2 border border-slate-300 rounded-xl font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs" value="5.0">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Priority (1-100)</label>
+            <input type="number" id="rule-priority" min="1" max="100" value="50" class="w-full px-3 py-2 border border-slate-300 rounded-xl font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Applies To</label>
+            <select id="rule-applies" class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+              <option value="Self">All Channels</option>
+              <option value="B2C">B2C Public Only</option>
+              <option value="SubAgents">Sub-Agents Wholesale Only</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Rounding Rule</label>
+            <select id="rule-rounding" class="w-full px-3 py-2 border border-slate-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs">
+              <option value="">None</option>
+              <option value="NearestDollar">Nearest Dollar ($)</option>
+              <option value="Up">Round Up (Ceil)</option>
+              <option value="Down">Round Down (Floor)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Condition Builder -->
+        <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl">
+          <div class="flex items-center justify-between mb-2">
+            <span class="font-bold text-slate-800 text-xs">Targeting Conditions (Airline / Route / Cabin)</span>
+            <button type="button" onclick="addConditionRow()" class="text-indigo-600 font-bold hover:text-indigo-800 text-[11px] cursor-pointer">+ Add Condition</button>
+          </div>
+          <div id="conditions-container" class="space-y-2">
+            <div class="flex items-center gap-2">
+              <select class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs bg-white">
+                <option value="airline">Airline</option>
+                <option value="route">Route</option>
+                <option value="cabin_class">Cabin Class</option>
+              </select>
+              <select class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs bg-white">
+                <option value="==">Equals (==)</option>
+                <option value="contains">Contains</option>
+              </select>
+              <input type="text" class="flex-1 px-2 py-1.5 border border-slate-300 rounded-lg text-xs font-mono" value="QF" placeholder="Value (e.g. QF, SYD-LAX)">
+              <button type="button" onclick="this.parentElement.remove()" class="text-rose-500 hover:text-rose-700 px-1 cursor-pointer">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-2 pt-2 border-t border-slate-100">
+          <button type="button" onclick="closeModal('modal-add-rule')" class="flex-1 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold cursor-pointer">
+            Cancel
+          </button>
+          <button type="submit" class="flex-1 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold shadow-md shadow-blue-600/30 cursor-pointer">
+            Deploy Rule
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: View Rule Details -->
+  <div id="modal-view-rule" class="modal-backdrop">
+    <div class="modal-box max-w-md bg-white rounded-2xl shadow-2xl p-6 text-slate-900 border border-slate-200">
+      <div class="flex items-center justify-between border-b border-slate-200 pb-3 mb-3">
+        <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+          <span>👁️</span> Rule Specification
+        </h3>
+        <button onclick="closeModal('modal-view-rule')" class="text-slate-400 hover:text-slate-600 text-lg leading-none cursor-pointer">✕</button>
+      </div>
+
+      <div class="space-y-2 text-xs">
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Name:</span>
+          <span id="vrule-name" class="font-bold text-slate-900"></span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Type:</span>
+          <span id="vrule-type" class="font-semibold text-slate-800"></span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Value:</span>
+          <span id="vrule-val" class="font-mono font-bold text-indigo-700"></span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Priority:</span>
+          <span id="vrule-priority" class="font-mono font-semibold"></span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Scope:</span>
+          <span id="vrule-scope" class="font-medium"></span>
+        </div>
+        <div class="flex justify-between py-1 border-b border-slate-100">
+          <span class="text-slate-500">Rounding:</span>
+          <span id="vrule-rounding" class="font-mono"></span>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <button onclick="closeModal('modal-view-rule')" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold cursor-pointer">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    function filterRules(query) {
+      const q = query.toLowerCase();
+      const rows = document.querySelectorAll('#rules-table-body tr');
+      rows.forEach(r => {
+        const text = (r.getAttribute('data-search') || r.innerText).toLowerCase();
+        r.style.display = text.includes(q) ? '' : 'none';
+      });
+    }
+
+    function viewRule(name, type, val, valType, priority, scope, rounding, status) {
+      document.getElementById('vrule-name').innerText = name;
+      document.getElementById('vrule-type').innerText = `${type} (${valType})`;
+      document.getElementById('vrule-val').innerText = val;
+      document.getElementById('vrule-priority').innerText = priority;
+      document.getElementById('vrule-scope').innerText = scope;
+      document.getElementById('vrule-rounding').innerText = rounding;
+      openModal('modal-view-rule');
+    }
+
+    function editRule(name, type, val, valType, priority, scope, rounding) {
+      document.getElementById('modal-rule-title').innerHTML = `<span>✏️</span> Edit Markup Rule`;
+      document.getElementById('rule-name').value = name;
+      document.getElementById('rule-type').value = type;
+      document.getElementById('rule-val').value = val;
+      document.getElementById('rule-val-type').value = valType;
+      document.getElementById('rule-priority').value = priority;
+      document.getElementById('rule-rounding').value = rounding === 'None' ? '' : rounding;
+      openModal('modal-add-rule');
+    }
+
+    function handleSaveRule(e) {
+      e.preventDefault();
+      closeModal('modal-add-rule');
+      showToast('Markup rule deployed successfully across pricing engines!');
+    }
+
+    function toggleRuleStatus(id) {
+      const badge = document.getElementById(`rstatus-${id}`);
+      if (!badge) return;
+      if (badge.innerText.trim() === 'active') {
+        badge.innerText = 'inactive';
+        badge.className = 'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200';
+        showToast('Rule deactivated');
+      } else {
+        badge.innerText = 'active';
+        badge.className = 'inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800 border border-emerald-200';
+        showToast('Rule activated');
+      }
+    }
+
+    function addConditionRow() {
+      const container = document.getElementById('conditions-container');
+      const div = document.createElement('div');
+      div.className = 'flex items-center gap-2';
+      div.innerHTML = `
+        <select class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs bg-white">
+          <option value="route">Route</option>
+          <option value="airline">Airline</option>
+          <option value="cabin_class">Cabin Class</option>
+        </select>
+        <select class="px-2 py-1.5 border border-slate-300 rounded-lg text-xs bg-white">
+          <option value="==">Equals (==)</option>
+          <option value="contains">Contains</option>
+        </select>
+        <input type="text" class="flex-1 px-2 py-1.5 border border-slate-300 rounded-lg text-xs font-mono" placeholder="Value (e.g. business)">
+        <button type="button" onclick="this.parentElement.remove()" class="text-rose-500 hover:text-rose-700 px-1 cursor-pointer">✕</button>
+      `;
+      container.appendChild(div);
+    }
+  </script>
+  <script src="../shared/walkthrough.js"></script>
+</body>
+</html>
